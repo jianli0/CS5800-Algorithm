@@ -41,7 +41,7 @@ class Stack:
         "Print the content of the stack"
         print "my stack is %r"%(self.list)
 
-class Tarjan:
+class Solution:
     index = 0
     mystack = Stack()
     DFN = []
@@ -53,7 +53,13 @@ class Tarjan:
         LOW.append(None)
         visited.append(False)
 
-    def tarjan(self,u,graph,depth):
+    def dfs(self,graph,depth):
+        for i in graph.keys():
+            if not self.visited[i]:
+                self.tarjan(graph,i,depth)
+
+
+    def tarjan(self,graph,u,depth):
         print "current depth is :%d"%(depth)
         self.index += 1
         self.DFN[u] = self.index
@@ -61,13 +67,13 @@ class Tarjan:
         print "%d DFN is %d" %(u,self.DFN[u])
         print "%d LOW is %d" %(u,self.LOW[u])
         self.mystack.push(u)
+        self.visited[u] = True
         self.mystack.printStack()
 
 
         for v in graph[u]:
             if not self.visited[v] :
-                self.visited[v] = True
-                self.tarjan(v,graph, depth + 1)
+                self.tarjan(graph,v, depth + 1)
                 self.LOW[u] = min(self.LOW[u],self.LOW[v])
                 print "%d LOW now is %d"%(u,self.LOW[u])
             elif self.mystack.isIn(v):
@@ -82,10 +88,12 @@ class Tarjan:
                 print v
                 if u == v:
                     break
-
+'''
 a = Tarjan()
 a.tarjan(1,graph_plus,1)
-
+'''
+b = Solution()
+b.dfs(graph5, 1)
 
 
 
