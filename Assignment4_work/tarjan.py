@@ -37,6 +37,9 @@ class Stack:
         "Returns true if element is in stack"
         return (element in self.list)
 
+    def printStack(self):
+        "Print the content of the stack"
+        print "my stack is %r"%(self.list)
 
 class Tarjan:
     index = 0
@@ -50,23 +53,30 @@ class Tarjan:
         LOW.append(None)
         visited.append(False)
 
-    def tarjan(self,u,graph):
+    def tarjan(self,u,graph,depth):
+        print "current depth is :%d"%(depth)
         self.index += 1
         self.DFN[u] = self.index
         self.LOW[u] = self.index
+        print "%d DFN is %d" %(u,self.DFN[u])
+        print "%d LOW is %d" %(u,self.LOW[u])
         self.mystack.push(u)
+        self.mystack.printStack()
+
 
         for v in graph[u]:
             if not self.visited[v] :
                 self.visited[v] = True
-                self.tarjan(v,graph)
+                self.tarjan(v,graph, depth + 1)
                 self.LOW[u] = min(self.LOW[u],self.LOW[v])
+                print "%d LOW now is %d"%(u,self.LOW[u])
             elif self.mystack.isIn(v):
                 self.LOW[u] = min(self.LOW[u], self.DFN[v])
+                print "%d LOW now is %d"%(u,self.LOW[u])
 
         if(self.DFN[u] == self.LOW[u]):
             print "a new SCC is "
-            print "# for test : current u is %d"%(u)
+            #print "# for test : current u is %d"%(u)
             while True:
                 v = self.mystack.pop()
                 print v
@@ -74,7 +84,7 @@ class Tarjan:
                     break
 
 a = Tarjan()
-a.tarjan(1,graph_plus)
+a.tarjan(1,graph_plus,1)
 
 
 
