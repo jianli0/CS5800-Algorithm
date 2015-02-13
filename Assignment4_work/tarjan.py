@@ -78,10 +78,11 @@ class Solution:
                 print "%d LOW now is %d"%(u,self.LOW[u])
             elif self.mystack.isIn(v):
                 self.LOW[u] = min(self.LOW[u], self.DFN[v])
-                print "%d LOW now is %d"%(u,self.LOW[u])
+                print "%d LOW noww is %d"%(u,self.LOW[u])
 
         if(self.DFN[u] == self.LOW[u]):
             print "a new SCC is "
+            print "-------------------------"
             #print "# for test : current u is %d"%(u)
             while True:
                 v = self.mystack.pop()
