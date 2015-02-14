@@ -20,20 +20,25 @@ class UF:
 
     def find(self,x):
         while self.parent[x] != x:
-            self.parent[x] = self.find(self.parent[x])
-        return self.parent[x]
+            x = self.parent[x]
+        return x
 
     def union(self,x,y):
         rx = self.find(x)
         ry = self.find(y)
+        print "now union %d and %d" %(x,y)
         if rx == ry:
+            print "same root"
             return
         if self.rank[rx] > self.rank[ry]:
+            print "union second to first"
             self.parent[ry] = rx
         else:
+            print "union first to second"
             self.parent[rx] = ry
             if self.rank[rx] == self.rank[ry]:
                 self.rank[ry] += 1
+                print "%d rank is now %d"%(ry,self.rank[ry])
 
     def startunion(self,graph):
         for u in graph.keys():
@@ -41,10 +46,10 @@ class UF:
                 self.union(u,v)
 
     def getparent(self):
-        print "parent list is %r"%(parent)
+        print "parent list is %r"%(self.parent)
 
     def getrank(self):
-        print "rank list is %r"%(rank)
+        print "rank list is %r"%(self.rank)
 
 
 a = UF()
