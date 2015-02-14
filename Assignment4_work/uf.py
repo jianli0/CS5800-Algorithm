@@ -33,12 +33,13 @@ class UF:
         if self.rank[rx] > self.rank[ry]:
             print "union second to first"
             self.parent[ry] = rx
-        else:
+        elif self.rank[rx] < self.rank[ry]:
             print "union first to second"
             self.parent[rx] = ry
-            if self.rank[rx] == self.rank[ry]:
-                self.rank[ry] += 1
-                print "%d rank is now %d"%(ry,self.rank[ry])
+        elif self.rank[rx] == self.rank[ry]:
+            self.parent[ry] = rx
+            self.rank[rx] += 1
+            print "%d rank is now %d"%(ry,self.rank[ry])
 
     def startunion(self,graph):
         for u in graph.keys():
