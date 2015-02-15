@@ -82,7 +82,7 @@ class Solution:
 
         if(self.DFN[u] == self.LOW[u]):
             print "a new SCC is "
-            print "-------------------------"
+            #print "-------------------------"
             #print "# for test : current u is %d"%(u)
             while True:
                 v = self.mystack.pop()

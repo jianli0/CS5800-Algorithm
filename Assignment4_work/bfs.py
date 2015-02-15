@@ -37,11 +37,11 @@ graph4 ={1:[7],
 
 class Solution:
     dist = []
-    dist.append(99999)
+    dist.append(None)
 
     def BFS(self,graph,s):
         for i in range(1,12):
-            self.dist.append(99999)
+            self.dist.append(None)
 
         self.dist[s] = 0
         Q = Queue()
@@ -50,10 +50,12 @@ class Solution:
         while not Q.isEmpty():
             print "the present queue is "
             Q.printq()
+            print "now distance from source node is"
+            print self.dist[1:12]
             u = Q.pop()
             print "now exploring %d" %(u)
             for v in graph[u]:
-                if self.dist[v] == 99999:
+                if self.dist[v] == None:
                     Q.push(v)
                     self.dist[v] = self.dist[u] + 1
 
