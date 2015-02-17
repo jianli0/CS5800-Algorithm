@@ -39,7 +39,7 @@ class Stack:
 
     def printStack(self):
         "Print the content of the stack"
-        print "my stack is %r"%(self.list)
+        print "   my stack is %r"%(self.list)
 
 class Solution:
     index = 0
@@ -60,14 +60,16 @@ class Solution:
 
 
     def tarjan(self,graph,u,depth):
-        print "current depth is :%d"%(depth)
+        print "%d  visted[%d] sets true"%(depth, u)
         self.index += 1
         self.DFN[u] = self.index
         self.LOW[u] = self.index
-        print "%d DFN is %d" %(u,self.DFN[u])
-        print "%d LOW is %d" %(u,self.LOW[u])
+        print "   pre[%d] sets %d" %(u,self.DFN[u])
+        print "   LOW[%d] sets %d" %(u,self.LOW[u])
         self.mystack.push(u)
+        print "   push %d to stack"%(u)
         self.visited[u] = True
+        print "   isRemoved[%d] set False"%(u)
         self.mystack.printStack()
 
 
@@ -75,29 +77,28 @@ class Solution:
             if not self.visited[v] :
                 self.tarjan(graph,v, depth + 1)
                 self.LOW[u] = min(self.LOW[u],self.LOW[v])
-                print "%d LOW now is %d"%(u,self.LOW[u])
+                print "   %d LOW now is %d"%(u,self.LOW[u])
             elif self.mystack.isIn(v):
                 self.LOW[u] = min(self.LOW[u], self.DFN[v])
-                print "%d LOW noww is %d"%(u,self.LOW[u])
+                print "   %d LOW now is %d"%(u,self.LOW[u])
 
         if(self.DFN[u] == self.LOW[u]):
-            print "a new SCC is "
-            #print "-------------------------"
             #print "# for test : current u is %d"%(u)
+            print "   isRoot[%d] is True" %(u)
+            C = []
             while True:
                 v = self.mystack.pop()
-                print v
+                print "   stack pop"
+                print "   isRemoved[%d] sets True" %(v)
+                C.append(v)
                 if u == v:
                     break
+            print "---a new SCC is %r" %(C)
+
 '''
 a = Tarjan()
 a.tarjan(1,graph_plus,1)
 '''
 b = Solution()
 b.dfs(graph5, 1)
-
-
-
-
-
 
