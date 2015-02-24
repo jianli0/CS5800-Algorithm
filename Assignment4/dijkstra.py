@@ -126,11 +126,12 @@ class Solution:
 
 
     def getdist(self):
+        print "Dist is"
         for i in range(1,11):
             if self.dist[i] == 999:
-                print "%d: INF"%(i),
+                print "(%d: INF)"%(i),
             else:
-                print "%d : %d"%(i,self.dist[i]),
+                print "(%d : %d)"%(i,self.dist[i]),
         print
         #print "dist is %r"%(self.dist[1:])
 
