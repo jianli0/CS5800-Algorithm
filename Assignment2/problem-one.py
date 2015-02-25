@@ -9,6 +9,20 @@ graph1 = {1 : [4,5,6],
         9 : [2,5,6,8],
         10 : [3,6,8]}
 
+graph11 ={1:[10],
+        2:[10],
+        3:[1,2,4,7,9,10],
+        4:[2,6],
+        5:[2,7,10],
+        6:[7,10],
+        7:[10],
+        8:[1,10],
+        9:[5,8],
+        10:[]
+        }
+
+
+
 class Solution:
 # initial
     visited = []
@@ -24,7 +38,10 @@ class Solution:
 
     def dfs(self,graph,depth):
         for i in graph.keys():
-            self.visited.insert(i,False)
+            self.visited.append(False)
+            self.pre.append(0)
+            self.post.append(0)
+
         for i in graph.keys():
             if not self.visited[i]:
                 self.explore(graph,i,depth)
@@ -42,24 +59,24 @@ class Solution:
         self.postvisit(v)
 
     def previsit(self,v):
-        self.pre.insert(v,self.publicClock)
+        self.pre[v] = self.publicClock
         print "pre[%d] sets %d" %(v, self.publicClock)
         print "clock increase from %d to %d"%(self.publicClock,self.publicClock + 1)
         self.publicClock += 1
 
     def postvisit(self,u):
-        self.post.insert(u,self.publicClock)
+        self.post[u] = self.publicClock
         print "post[%d] sets %d" %(u, self.publicClock)
         print "clock increase from %d to %d"%(self.publicClock,self.publicClock + 1)
         self.publicClock += 1
 
     def getpre(self):
-        print self.pre
+        print self.pre[1:]
 
     def getpost(self):
-        print self.post
+        print self.post[1:]
 
 a = Solution()
-a.dfs(graph,1)
+a.dfs(graph11,1)
 a.getpre()
 a.getpost()
