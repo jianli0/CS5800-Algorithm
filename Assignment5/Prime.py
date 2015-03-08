@@ -66,7 +66,7 @@ class PriorityQueue:
     def printHeap(self):
         print "Heap is "
         for [dis,node] in self.heap:
-            print "Node%d.dist = %.1f"%(node,dis)
+            print "%d.cost= %.1f"%(node,dis)
 
 
 class Solution():
@@ -78,12 +78,15 @@ class Solution():
         self.start = s
         self.heap = PriorityQueue()
         self.step = 1
+        self.visited = []
+        self.visited.append(False)
 
     def prim(self,G,L):
         '''initi'''
         for i in G.keys():
             self.cost.append(float("inf"))
             self.prev.append(None)
+            self.visited.append(False)
         self.cost[self.start] = 0
 
         for i in range(1,10):
@@ -95,15 +98,22 @@ class Solution():
             self.getcost()
             self.heap.printHeap()
             v = self.heap.pop()
+            self.visited[v] = True
+            self.printvisited()
             for z in G[v]:
-                if (v,z) in length.keys():
-                    if self.cost[z] > L[(v,z)]:
-                        self.cost[z] = L[(v,z)]
-                elif (z,v) in length.keys():
-                    if self.cost[z] > L[(z,v)]:
-                        self.cost[z] = L[(z,v)]
-                self.prev[z] = v
-                self.heap.decreasekey(z,self.cost[z])
+                if self.visited[z] == False:
+                    if (v,z) in length.keys():
+                        if self.cost[z] > L[(v,z)]:
+                            self.cost[z] = L[(v,z)]
+                    elif (z,v) in length.keys():
+                        if self.cost[z] > L[(z,v)]:
+                            self.cost[z] = L[(z,v)]
+                    self.prev[z] = v
+                    self.heap.decreasekey(z,self.cost[z])
+
+    def printvisited(self):
+        for i in range(len(self.visited)-1):
+            print "%d.visited = %r"%(i+1,self.visited[i+1])
 
 
     def getcost(self):
@@ -117,7 +127,7 @@ class Solution():
         print self.prev[1:]
 
 
-a = Solution(3)
+a = Solution(5)
 a.prim(graph,length)
 
 

@@ -48,12 +48,11 @@ class Solution:
 
         sorted_length = self.sortlength(L)
         for ((u,v),length) in sorted_length:
-            print "--------------------------------"
             print "now exploring edge(%d,%d)"%(u,v)
             if not self.find(u) == self.find(v):
                 self.X.append((u,v))
                 self.union(u,v)
-            print "the parent is %r"%(self.parent)
+            print "the parent is %r"%(self.parent[1:])
             print "MST now is %r"%(self.X)
             print "--------------------------------"
 
@@ -77,10 +76,11 @@ class Solution:
             return
         if self.rank[rx] > self.rank[ry]:
             self.parent[ry] = rx
-        else:
+        elif self.rank[rx] < self.rank[ry]:
             self.parent[rx] = ry
-            if self.rank[rx] == self.rank[ry]:
-                self.rank[ry] += 1
+        elif self.rank[rx] == self.rank[ry]:
+                self.parent[ry] = rx
+                self.rank[rx] += 1
 
 a = Solution()
 a.kruskal(graph,length)
