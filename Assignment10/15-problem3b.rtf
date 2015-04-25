@@ -1,0 +1,49 @@
+0   dpll on Exp() = 
+VWX and VXY and V-YZ and -V-XY and VX-Z and V-WY and
+-VW-X and V-W-X and -V-X-Z and -XY-Z and -VY-Z and -W-X-Z and
+-WY-Z and V-W-Z and -WYZ and V-XZ and VYZ and WYZ and
+-V-W-Y and -W-X-Y and -V-WX
+
+1   Trying V = True
+1   dpll on Exp(V=True) = 
+-XY and W-X and -X-Z and -XY-Z and Y-Z and -W-X-Z and
+-WY-Z and -WYZ and WYZ and-W-Y and -W-X-Y and -WX
+
+2   Trying W = True
+2   dpll on Exp(V=True, W=True) = 
+-XY and -X-Z and -XY-Z and Y-Z and -X-Z and
+Y-Z and YZ and -Y and -X-Y and X
+
+3   Using unit clause to set Y = False
+3   dpll on Exp(V=True, W=True, Y=False) = 
+-X and -X-Z and -X-Z and -Z and -X-Z and
+-Z and Z and X
+
+4   Using unit clause to set X = False
+4   dpll on Exp(V=True, W=True, Y=False, X=False) = 
+not satisfied
+end 4
+not satisfied
+end 3
+
+2   Trying W = False
+2   dpll on Exp(V=True, W=False) = 
+-XY and -X and -X-Z and -XY-Z and Y-Z and YZ 
+
+3   Using unit clause to set X=False
+3   dpll on Exp(V=True, W=False, X=False) = 
+Y-Z and YZ 
+
+4   Trying Y = True
+4   dpll on Exp(V=True, W=False, X=False, Y=True) = 
+Y-Z and YZ 
+satisfied
+end 4
+satisfied
+end 3
+satisfied
+end 2
+satisfied
+end 1
+satisfied
+end 0

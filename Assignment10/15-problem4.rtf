@@ -1,0 +1,144 @@
+0   dpll on Exp() = 
+(A_c1 A_c2 A_c3) and (B_c1 B_c2 B_c3) and (C_c1 C_c2 C_c3) and (D_c1 D_c2 D_c3)
+and (-A_c1 -A_c2) and (-A_c1 -A_c3) and (-A_c2 -A_c3)
+and (-B_c1 -B_c2) and (-B_c1 -B_c3) and (-B_c2 -B_c3)
+and (-C_c1 -C_c2) and (-C_c1 -C_c3) and (-C_c2 -C_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-A_c1 -B_c1) and (-A_c2 -B_c2) and (-A_c3 -B_c3) 
+and (-A_c1 -C_c1) and (-A_c2 -C_c2) and (-A_c3 -C_c3) 
+and (-B_c1 -C_c1) and (-B_c2 -C_c2) and (-B_c3 -C_c3) 
+and (-B_c1 -D_c1) and (-B_c2 -D_c2) and (-B_c3 -D_c3) 
+and (-C_c1 -D_c1) and (-C_c2 -D_c2) and (-C_c3 -D_c3) 
+
+1   Trying A_c1 = True
+1   dpll on Exp(A_c1=True) = 
+(B_c1 B_c2 B_c3) and (C_c1 C_c2 C_c3) and (D_c1 D_c2 D_c3)
+and (-A_c2) and (-A_c3) and (-A_c2 -A_c3)
+and (-B_c1 -B_c2) and (-B_c1 -B_c3) and (-B_c2 -B_c3)
+and (-C_c1 -C_c2) and (-C_c1 -C_c3) and (-C_c2 -C_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-B_c1) and (-A_c2 -B_c2) and (-A_c3 -B_c3) 
+and (-C_c1) and (-A_c2 -C_c2) and (-A_c3 -C_c3) 
+and (-B_c1 -C_c1) and (-B_c2 -C_c2) and (-B_c3 -C_c3) 
+and (-B_c1 -D_c1) and (-B_c2 -D_c2) and (-B_c3 -D_c3) 
+and (-C_c1 -D_c1) and (-C_c2 -D_c2) and (-C_c3 -D_c3) 
+
+2   Using unit clause to set A_c2=False
+2   dpll on Exp(A_c1=True,A_c2=False) = 
+(B_c1 B_c2 B_c3) and (C_c1 C_c2 C_c3) and (D_c1 D_c2 D_c3)
+and (-A_c3)
+and (-B_c1 -B_c2) and (-B_c1 -B_c3) and (-B_c2 -B_c3)
+and (-C_c1 -C_c2) and (-C_c1 -C_c3) and (-C_c2 -C_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-B_c1) and (-A_c3 -B_c3) 
+and (-C_c1) and (-A_c3 -C_c3) 
+and (-B_c1 -C_c1) and (-B_c2 -C_c2) and (-B_c3 -C_c3) 
+and (-B_c1 -D_c1) and (-B_c2 -D_c2) and (-B_c3 -D_c3) 
+and (-C_c1 -D_c1) and (-C_c2 -D_c2) and (-C_c3 -D_c3) 
+
+3   Using unit clause to set A_c3=False
+3   dpll on Exp(A_c1=True,A_c2=False,A_c3=False) = 
+(B_c1 B_c2 B_c3) and (C_c1 C_c2 C_c3) and (D_c1 D_c2 D_c3)
+and (-B_c1 -B_c2) and (-B_c1 -B_c3) and (-B_c2 -B_c3)
+and (-C_c1 -C_c2) and (-C_c1 -C_c3) and (-C_c2 -C_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-B_c1) 
+and (-C_c1) 
+and (-B_c1 -C_c1) and (-B_c2 -C_c2) and (-B_c3 -C_c3) 
+and (-B_c1 -D_c1) and (-B_c2 -D_c2) and (-B_c3 -D_c3) 
+and (-C_c1 -D_c1) and (-C_c2 -D_c2) and (-C_c3 -D_c3) 
+
+4   Using unit clause to set B_c1=False
+4   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False) = 
+(B_c2 B_c3) and (C_c1 C_c2 C_c3) and (D_c1 D_c2 D_c3)
+and (-B_c2 -B_c3)
+and (-C_c1 -C_c2) and (-C_c1 -C_c3) and (-C_c2 -C_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-C_c1) 
+and (-B_c2 -C_c2) and (-B_c3 -C_c3) 
+and (-B_c2 -D_c2) and (-B_c3 -D_c3) 
+and (-C_c1 -D_c1) and (-C_c2 -D_c2) and (-C_c3 -D_c3) 
+
+5   Using unit clause to set C_c1=False
+5   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False,C_c1=False) = 
+(B_c2 B_c3) and (C_c2 C_c3) and (D_c1 D_c2 D_c3)
+and (-B_c2 -B_c3)
+and (-C_c2 -C_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-B_c2 -C_c2) and (-B_c3 -C_c3) 
+and (-B_c2 -D_c2) and (-B_c3 -D_c3) 
+and (-C_c2 -D_c2) and (-C_c3 -D_c3) 
+
+6   Trying B_c2 = True
+6   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False,C_c1=False,B_c2=True) = 
+(C_c2 C_c3) and (D_c1 D_c2 D_c3)
+and (-B_c3)
+and (-C_c2 -C_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-C_c2) and (-B_c3 -C_c3) 
+and (-D_c2) and (-B_c3 -D_c3) 
+and (-C_c2 -D_c2) and (-C_c3 -D_c3) 
+
+7   Using unit clause to set B_c3=False
+7   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False,C_c1=False,B_c2=True,B_c3=False) = 
+(C_c2 C_c3) and (D_c1 D_c2 D_c3)
+and (-C_c2 -C_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-C_c2) 
+and (-D_c2) 
+and (-C_c2 -D_c2) and (-C_c3 -D_c3) 
+
+8   Using unit clause to set C_c2 = False
+8   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False,C_c1=False,B_c2=True,B_c3=False,
+                C_c2=False) = 
+(C_c3) and (D_c1 D_c2 D_c3)
+and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3)
+and (-D_c2) 
+and (-C_c3 -D_c3) 
+
+9   Using unit clause to set C_c3= True
+9   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False,C_c1=False,B_c2=True,B_c3=False,
+                C_c2=False,C_c3=True) = 
+(D_c1 D_c2 D_c3) and (-D_c1 -D_c2) and (-D_c1 -D_c3) and (-D_c2 -D_c3) and (-D_c2) and (-D_c3) 
+
+10   Using unit clause to set D_c2= False
+10   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False,C_c1=False,B_c2=True,B_c3=False,
+                C_c2=False,C_c3=True,D_c2=False) = 
+(D_c1 D_c3) and  (-D_c1 -D_c3) and (-D_c3) 
+
+11   Using unit clause to set D_c3=False
+11   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False,C_c1=False,B_c2=True,B_c3=False,
+                C_c2=False,C_c3=True,D_c2=False,D_c3=False) = 
+(D_c1) 
+
+12   Using unit clause to set D_c1=True
+12   dpll on Exp(A_c1=True,A_c2=False,A_c3=False,B_c1=False,C_c1=False,B_c2=True,B_c3=False,
+                C_c2=False,C_c3=True,D_c2=False,D_c3=False,D_c1=True) = 
+satisfied
+end 12
+satisfied
+end 11
+satisfied
+end 10
+satisfied
+end 9
+satisfied
+end 8
+satisfied
+end 7
+satisfied
+end 6
+satisfied
+end 5
+satisfied
+end 4
+satisfied
+end 3
+satisfied
+end 2
+satisfied
+end 1
+satisfied
+end 0
+
+
