@@ -1,0 +1,87 @@
+
+<!-- saved from url=(0179)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/htk1fpdxm362q1/asst10.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662523&Signature=2PEdNPXQamCZirPvu3FyZtWKqtE%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Assignment #10</h1></center>
+<p>
+
+1. (15 points) Your company requires that you develop a program that will
+generate a random widget.  You don't actually know what a widget is because
+that is a trade secret. However, you have been given a program that will
+generate a random gadget. (You don't know what a gadget is either.) You also
+have been given a program that will test whether a gadget is a widget. However,
+the test program is very crude. If your gadget is a widget, your test program
+will be wrong 99% of the time. If your gadget is not a widget, your test
+program will always be correct. Your program can be run repeatedly on the same
+gadget, and each test result will be independent. Your program must be 99%
+certain that it has a widget.  Develop an algorithm using pseudo-code for
+generating a random widget.
+
+</p><p>
+
+2. (20 points) Now suppose that the program in Question #1 above for testing
+whether a gadget is a widget will also sometimes be wrong when the gadget is
+not a widget. Modify your algorithm to handle the following two cases:
+</p><ol type="a">
+<li>When the gadget is not a widget, the test will be incorrect 10% of the time.
+</li><li>When the gadget is not a widget, the test will be incorrect 1% of the time.
+</li></ol>
+
+<p>
+3. (20 points) An experiment is studying two factors, each of which has four
+possible values, for a total of 16 combinations of the two factors. The
+experimental design is a 4×4 grid where in each row and column each value
+of a factor occurs exactly once. For example, for just the first factor the
+grid might look like this:
+</p><p>
+<table cellpadding="5">
+<tbody><tr><td>A</td><td>B</td><td>C</td><td>D
+</td></tr><tr><td>B</td><td>C</td><td>D</td><td>A
+</td></tr><tr><td>C</td><td>D</td><td>A</td><td>B
+</td></tr><tr><td>D</td><td>A</td><td>B</td><td>C
+</td></tr></tbody></table>
+</p><p>
+where the four possible values of the first factor are A, B, C and D. An
+additional constraint is that all 16 combinations of the two factors must each
+occur exactly once in the grid. Develop a 3SAT expression that specifies the
+requirements of this experimental design. Some of the grid entries already have
+one or the other factor specified, and it is required to extend the design to
+the rest of the grid. Show how one can specify these grid entries in your 3SAT
+expression. It isn't necessary to write out the entire expression. It is enough
+to show how it can be constructed.
+</p><p>
+4. (30 points) Show the DPLL algorithm on the following SAT expressions:
+</p><p>
+</p><ol type="a">
+<li>
+<pre>S-U-V and VXZ and S-X-Z and V-W-Z and WX-Z and -V-W-Y and -UW-X and 
+XY-Z and -S-WZ and -U-W-X and U-XY and -SUV and -S-VZ and U-V-Y
+</pre>
+</li><li>
+<pre>SXY and -VXZ and -SYZ and -UV-W and -UWX and -V-WZ and U-Y-Z and
+-XY-Z and VW-Z and -V-XY and SVZ and -S-U-Y and -V-W-X and -VXY
+</pre>
+</li></ol>
+<p>
+When there is a choice of which variable to use, the variable that is
+lexicographically first should be used, and branch by setting a variable first
+to true and then to false.  Show recursive
+calls to DPLL using begin and end with the depth of recursion (starting at 0).
+Apply only unit propagation, and only once per recursive call to DPLL.
+</p><p>
+
+5. (15 points) A University has 15 nonoverlapping time slots for courses, 9
+slots on a MWF schedule, and 6 slots on a TTh schedule. Student enroll in
+courses before the slots and rooms are allocated for the courses. The courses
+must be given slots so that no pair of courses with a common student are
+scheduled for the same slot. There is no limit on the number of rooms.  Propose
+a way to determine whether the slots can be allocated, and if they can, then
+find an allocation. Determine the complexity class of this problem, and prove
+it.
+
+
+
+
+</p></body></html>

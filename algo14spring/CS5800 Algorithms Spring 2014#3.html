@@ -1,0 +1,312 @@
+
+<!-- saved from url=(0177)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/hs24nv2cz636ah/ans3.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662350&Signature=knTkmQr24lxc2JylDKgYvxawb8k%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Solution to Assignment #3</h1></center>
+<p>
+
+In the union algorithm, when combining trees which cannot otherwise be
+distinguished (such as being of the same rank), the new root should be from the
+tree specified by the first parameter to union.
+
+</p><p>
+
+1. (12 points) Run the union-find algorithm using union with ranks on the following set of edges in the order given:
+<table cellpadding="5">
+<tbody><tr><td>(1,15)</td><td>(6,17)</td><td>(10,19)</td><td>(1,2)</td><td>(2,12)</td><td>(17,15)</td><td>(7,13)</td><td>(19,3)</td><td>(4,7)</td><td>(4,3)</td><td>(17,13)
+</td></tr></tbody></table>
+</p><p>
+Show what the forest looks like after each step.
+Note: Do not use path compression.
+
+</p><p>
+<font color="green">
+The following are the parent pointers. Semicolons separate connected components.
+</font></p><p><font color="green">
+</font></p><pre><font color="green">1&#8592;15
+1&#8592;15; 6&#8592;17
+1&#8592;15; 6&#8592;17; 10&#8592;19
+1&#8592;15, 1&#8592;2; 6&#8592;17; 10&#8592;19
+1&#8592;15, 1&#8592;2, 1&#8592;12; 6&#8592;17; 10&#8592;19
+6&#8592;17, 6&#8592;1, 1&#8592;15, 1&#8592;2, 1&#8592;12; 10&#8592;19
+6&#8592;17, 6&#8592;1, 1&#8592;15, 1&#8592;2, 1&#8592;12; 10&#8592;19; 7&#8592;13
+6&#8592;17, 6&#8592;1, 1&#8592;15, 1&#8592;2, 1&#8592;12; 10&#8592;19, 10&#8592;3; 7&#8592;13
+6&#8592;17, 6&#8592;1, 1&#8592;15, 1&#8592;2, 1&#8592;12; 10&#8592;19, 10&#8592;3; 7&#8592;13, 7&#8592;4
+6&#8592;17, 6&#8592;1, 1&#8592;15, 1&#8592;2, 1&#8592;12; 7&#8592;13, 7&#8592;4, 7&#8592;10, 10&#8592;19, 10&#8592;3
+6&#8592;17, 6&#8592;1, 1&#8592;15, 1&#8592;2, 1&#8592;12, 6&#8592;7, 7&#8592;13, 7&#8592;4, 7&#8592;10, 10&#8592;19, 10&#8592;3
+</font></pre><font color="green">
+</font>
+<p>
+2. (16 points) Simultaneously run the DFS algorithm and union-find with path compression on the following directed graph.
+Union is performed just before calling explore recursively in the loop over the adjacent edges.
+Each vertex has a parent pointer for the union-find algorithm.  
+When there is a choice for the next vertex, use the one that is smaller
+numerically. Show all steps.
+<table cellpadding="5">
+<tbody><tr><td>(1,5)</td><td>(1,6)</td><td>(2,4)</td><td>(3,1)
+</td></tr><tr><td>(6,3)</td><td>(7,9)</td><td>(9,3)</td><td>(10,8)
+</td></tr><tr><td>(10,11)</td><td>(11,8)</td><td>(11,10)
+</td></tr></tbody></table>
+</p><p>
+<font color="green">
+</font></p><pre><font color="green">DFS begin 0
+explore(1) begin 1
+union(1,5) begin 2
+find(1) begin 3
+end 3
+find(5) begin 3
+end 3
+set 5.parent to 1
+end 2
+explore(5) begin 2
+end 2
+union(1,6) begin 2
+find(1) begin 3
+end 3
+find(6) begin 3
+end 3
+set 6.parent to 1
+end 2
+explore(6) begin 2
+union(6,3) begin 3
+find(6) begin 4
+find(1) begin 5
+end 5
+end 4
+find(3) begin 4
+end 4
+set 3.parent to 1
+end 3
+explore(3) begin 3
+union(3,1) begin 4
+find(3) begin 5
+find(1) begin 6
+end 6
+end 5
+find(1) begin 5
+end 5
+end 4
+end 3
+end 2
+end 1
+explore(2) begin 1
+union(2,4) begin 2
+find(2) begin 3
+end 3
+find(4) begin 3
+end 3
+set 4.parent to 2
+end 2
+explore(4) begin 2
+end 2
+end 1
+explore(7) begin 1
+union(7,9) begin 2
+find(7) begin 3
+end 3
+find(9) begin 3
+end 3
+set 9.parent to 7
+end 2
+explore(9) begin 2
+union(9,3) begin 3
+find(9) begin 4
+find(7) begin 5
+end 5
+end 4
+find(3) begin 4
+find(1) begin 5
+end 5
+end 4
+set 1.parent to 7
+end 3
+end 2
+end 1
+explore(10) begin 1
+union(10,8) begin 2
+find(10) begin 3
+end 3
+find(8) begin 3
+end 3
+set 8.parent to 10
+end 2
+explore(8) begin 2
+end 2
+union(10,11) begin 2
+find(10) begin 3
+end 3
+find(11) begin 3
+end 3
+set 11.parent to 10
+end 2
+explore(11) begin 2
+union(11,8) begin 3
+find(11) begin 4
+find(10) begin 5
+end 5
+end 4
+find(8) begin 4
+find(10) begin 5
+end 5
+end 4
+end 3
+union(11,10) begin 3
+find(11) begin 4
+find(10) begin 5
+end 5
+end 4
+find(10) begin 4
+end 4
+end 3
+end 2
+end 1
+end 0
+</font></pre><font color="green">
+</font>
+<p>
+3. (12 points) Add the following three edges to the graph in Problem #2 above:
+(1,10), (8,7) and (9,2).  Run BFS on the resulting directed graph, starting
+with vertex 1. Show every step.
+
+</p><p>
+<font color="green">
+<table cellpadding="5" border="1">
+<tbody><tr><th>Node visited</th><th>Queue after visit
+</th></tr><tr><td></td><td>1
+</td></tr><tr><td>1</td><td>10, 6, 5
+</td></tr><tr><td>5</td><td>10, 6
+</td></tr><tr><td>6</td><td>3, 10
+</td></tr><tr><td>10</td><td>11, 8, 3
+</td></tr><tr><td>3</td><td>11, 8
+</td></tr><tr><td>8</td><td>7, 11
+</td></tr><tr><td>11</td><td>7
+</td></tr><tr><td>7</td><td>9
+</td></tr><tr><td>9</td><td>2
+</td></tr><tr><td>2</td><td>4
+</td></tr><tr><td>4</td><td>
+</td></tr></tbody></table>
+</font>
+</p><p>
+4. (25 points) Prove Tarjan's second path property. Show all of the details.
+In particular, be sure to show the details for the induction.
+
+</p><p>
+<font color="green">
+
+The result R to be proved is Property 2.
+</font></p><p><font color="green">
+
+The inductive hypothesis H(n) is "Either (1) there is a vertex v of p such that
+the vertexes of p are in Tv or (2) There is a path of tree edges
+v<sub>1</sub>&#8594;v<sub>2</sub>&#8594;...&#8594;v<sub>n</sub> such that v<sub>1</sub> is a root in the DFS forest and the
+vertexes of the path p are all in Tv<sub>n</sub>."
+
+</font></p><p><font color="green">
+
+Initialization. The roots of the DFS forest satisfy the conditions of Property 1,
+so one of them has all of the vertexes of the path p. (This was stated in the posted document and one should cite it.)
+This implies (2) of the statement of H(1), so H(1) is true.
+
+</font></p><p><font color="green">
+
+Maintenance. Assume H(n) is true. If case (1) is true, then case (1) is also true for H(n+1).
+If case (1) is not true then case (2) must be true. We also know that v<sub>n</sub> is not a vertex of p.
+The tree edges of v<sub>n</sub> are adjacent to a set of vertexes that satisfy the conditions of Property 1.
+Therefore, the vertexes of p are contained in one of the subtrees. Let v<sub>n+1</sub> be the root of the subtree
+that contains p. This gives case (2) of H(n+1) so H(n+1) is true.
+
+</font></p><p><font color="green">
+
+Termination. This is the case H(n) where n=|V|. So set n to |V| and assume that H(n) is true.
+Then either case (1) is true in which case the result follows,
+or case (2) is true in which case there is a path of tree edges
+v<sub>1</sub>&#8594;v<sub>2</sub>&#8594;...&#8594;v<sub>n</sub> such that v<sub>1</sub> is a root in the DFS forest and the
+vertexes of the path p are all in Tv<sub>n</sub>. Since n is |V|, all of the vertexes of the graph are in this path of tree edges.
+So the path p can only consist of the vertex v<sub>n</sub>. Therefore, case (1) holds in this case.
+</font>
+</p><p>
+
+5. (20 points) Show what happens when Tarjan's strongly-connected component algorithm is applied to the following directed graph:
+<table cellpadding="5">
+<tbody><tr><td>(1,8)</td><td>(2,4)</td><td>(2,6)</td><td>(3,1)
+</td></tr><tr><td>(3,5)</td><td>(4,1)</td><td>(4,10)</td><td>(5,3)
+</td></tr><tr><td>(5,7)</td><td>(6,4)</td><td>(7,5)</td><td>(7,9)
+</td></tr><tr><td>(8,2)</td><td>(9,10)</td><td>(10,9)
+</td></tr></tbody></table>
+</p><p>
+Use the technique explained in class. Show how the strongly-connected components "grow" as the DFS algorithm proceeds.
+In other words, as each edge is processed by the DFS algorithm, show what the strongly-connected components are
+up to that point in the algorithm. Also show what happens as one goes from one step to the next, and explain why it happens.
+
+</p><p>
+<font color="green">
+</font></p><ol><font color="green">
+<li>(1,8) is tree edge so it does not change the SCCs
+</li><li>(8,2) is tree edge so it does not change the SCCs
+</li><li>(2,4) is tree edge so it does not change the SCCs
+</li><li>(4,1) is a back edge to 1 so 4, 2 and 8 are added to the SCC with 1 as the root
+</li><li>(4,10) is tree edge so it does not change the SCCs
+</li><li>(10,9) is tree edge so it does not change the SCCs
+</li><li>(9,10) is a back edge to 10 so 9 is added to the SCC with 10 as the root
+</li><li>The SCC with 10 as the root is removed, so {9,10} are removed.
+</li><li>(2,6) is tree edge so it does not change the SCCs
+</li><li>(6,4) is a cross edge to a vertex that has not been removed. So 6 is added to the SCC with 1 as the root
+</li><li>The SCC with 1 as the root is removed, so {1,2,4,6,8} are removed.
+</li><li>(3,1) is a cross edge to a vertex that has been removed so it does not change the SCCs.
+</li><li>(3,5) is tree edge so it does not change the SCCs
+</li><li>(5,3) is a back edge so 5 is added to the SCC with 3 as the root
+</li><li>(5,7) is tree edge so it does not change the SCCs
+</li><li>(7,5) is a back edge so 7 is added to the SCC containing 5 (which has 3 as the root).
+</li><li>(7,9) is a cross edge to a vertex that has been removed so it does not change the SCCs.
+</li><li>The SCC with 3 as the root is removed, so {3,5,7} are removed.
+</li></font></ol><font color="green">
+<p>
+Here is the diagram:
+</p><p>
+</p><center><img src="./CS5800 Algorithms Spring 2014#3_files/scc.gif"></center>
+</font>
+<p>
+6. (15 points) A social networking site allows people to "like" other people.
+The site automatically specifies that every person likes him/herself.
+If a person A likes person B, it need not be the case that person B likes person A.
+However, if person A likes person B and person B likes person C, then person A likes person C.
+A "clique" is a set of people who like each other (i.e., everyone likes everyone else in the set).
+Using pseudo-code, develop an algorithm that finds all of the maximal cliques on the social networking site.
+Your algorithm must be linear in the number of like relationships on the site.
+Prove that your algorithm is linear.
+</p><p>
+<font color="green">
+Formulate the problem as a directed graph problem.
+Each person is a node in the graph.
+Each like relationship is directed edge in the graph from the person who likes to the person who is liked.
+</font></p><p><font color="green">
+A clique is a strongly connected subgraph.
+A clique is maximal when it is a strongly connected component.
+</font></p><p><font color="green">
+input: the graph of the social networking site<br>
+output: the set of cliques
+</font></p><p><font color="green">
+Invoke the Tarjan SCC algorithm.
+</font></p><p><font color="green">
+The Tarjan SCC algorithm is linear in the number of nodes plus the number of edges.
+The number of edges is the number of like relationships.
+Each person likes him/herself, so the number of vertexes is at most the number of edges,
+so &#920;(V+E)=&#920;(E) in this case. Therefore the algorithm is linear.
+</font>
+
+<font color="red">
+Note that if one simply asserts that because the Tarjan SCC algorithm is
+linear, then your algorithm is linear, then your proof is incorrect. The
+question requires that you show that the algorithm is linear <i>in the number
+of like relationships on the site</i>.  The linearity of the SCC algorithm only
+shows that your algorithm is linear in the number of persons on the site plus
+the number of like relationships on the site. If it were not for the
+requirement that each person likes him/herself, there could be a very large
+number of persons relative to the number of like relationships.
+</font>
+
+
+
+</p></body></html>

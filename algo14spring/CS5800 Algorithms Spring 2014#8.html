@@ -1,0 +1,333 @@
+
+<!-- saved from url=(0179)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/hubeb607gpw238/ans8.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662279&Signature=GHq4JI3cAvoWNCfHNfWSv1D%2FfyU%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Solution to Assignment #8</h1></center>
+<p>
+
+1. (20 points) A university department teaches various courses and has faculty
+to teach the courses.  Each faculty member can teach some of the courses, and
+each faculty member has a maximum number of sections that the faculty member
+can teach. Each course has a desired number of sections that should be taught,
+but in practice the desired number is the upper limit on the number of sections
+of a course.  Express this problem as a maximum flow problem.
+</p><p>
+<font color="blue">
+Construct a DAG with one node as the source, one node as the target, and nodes
+for the faculty and courses. There are edges from the source to each course, 
+from the faculty to the target, and from each course to each faculty member who 
+can teach the course. Note that the edges could all be reversed. The weight
+on the edge from a faculty member to the target is the maximum number of sections
+that the faculty member can teach. The weight on the edge from the source to
+a course is the desired number of sections of the course. Other edges have
+infinite (unlimited) weight. A maximum flow from the source to the target gives the
+maximum number of sections that can be taught subject to the constraints.
+</font>
+</p><p>
+2. (10 points) For the situation in Question 1, the department has three
+faculty: X, Y and Z.  The department teaches courses A, B, C and D. Faculty
+members X and Y teach at most 2 sections, and Z teaches at most 3. Courses A
+and D should all have up to two sections, and the others should have one
+section. X can teach A and B, Y can teach C and D, and Z can teach B and
+C. Find a maximum matching of faculty to course sections, and prove that it is
+a maximum.
+
+</p><p>
+<font color="blue">
+The maximum flow is 6. 
+</font></p><ul><font color="blue">
+<li>X teaches 2 sections of A
+</li><li>Z teaches 1 section of B
+</li><li>Z teaches 1 section of C
+</li><li>Y teaches 2 sections of D
+</li></font></ul><font color="blue">
+</font><p><font color="blue">
+The edges out of s have total weight 6 so this is a min cut which
+proves that the maximum possible flow is 6.
+</font>
+</p><p>
+
+3. (25 points) Compute the maximum flow from node 5 to node 2 in the following directed graph:
+</p><p>
+<table cellpadding="5" border="0">
+<tbody><tr><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length
+</th></tr><tr><td>(1,3)</td><td>19</td><td>(1,9)</td><td>2</td><td>(2,1)</td><td>20</td><td>(2,3)</td><td>3</td><td>(3,7)</td><td>4</td><td>(3,8)</td><td>4
+</td></tr><tr><td>(4,2)</td><td>7</td><td>(4,5)</td><td>19</td><td>(4,7)</td><td>19</td><td>(5,3)</td><td>18</td><td>(5,6)</td><td>21</td><td>(5,8)</td><td>11
+</td></tr><tr><td>(6,4)</td><td>12</td><td>(7,2)</td><td>6</td><td>(7,6)</td><td>21</td><td>(8,6)</td><td>9</td><td>(9,2)</td><td>22</td><td>(9,4)</td><td>10
+</td></tr></tbody></table>
+</p><p>
+Also compute a minimum cut. Show all of the steps in the Dinic algorithm.
+</p><p>
+<font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><td>BFS from node 5</td><td>max flow to node</td><td>parent with max flow
+</td></tr><tr><td>5 &#8594; 3</td><td>18</td><td>5
+</td></tr><tr><td>5 &#8594; 6</td><td>21</td><td>5
+</td></tr><tr><td>5 &#8594; 8</td><td>11</td><td>5
+</td></tr><tr><td>3 &#8594; 7</td><td>4</td><td>3
+</td></tr><tr><td>6 &#8594; 4</td><td>12</td><td>6
+</td></tr><tr><td>7 &#8594; 2</td><td>4</td><td>7
+</td></tr><tr><td>4 &#8594; 2</td><td>7</td><td>4
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+The path is 5, 6, 4, 2 with flow 7
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><th>Residual graph edge</th><th>Weight
+</th></tr><tr><td>(1,3)</td><td>19
+</td></tr><tr><td>(1,9)</td><td>2
+</td></tr><tr><td>(2,1)</td><td>20
+</td></tr><tr><td>(2,3)</td><td>3
+</td></tr><tr><td>(2,4)</td><td>7
+</td></tr><tr><td>(3,7)</td><td>4
+</td></tr><tr><td>(3,8)</td><td>4
+</td></tr><tr><td>(4,5)</td><td>19
+</td></tr><tr><td>(4.6)</td><td>7
+</td></tr><tr><td>(4,7)</td><td>19
+</td></tr><tr><td>(5,3)</td><td>18
+</td></tr><tr><td>(5,6)</td><td>14
+</td></tr><tr><td>(5,8)</td><td>11
+</td></tr><tr><td>(6,4)</td><td>5
+</td></tr><tr><td>(6,5)</td><td>7
+</td></tr><tr><td>(7,2)</td><td>6
+</td></tr><tr><td>(7,6)</td><td>21
+</td></tr><tr><td>(8,6)</td><td>9
+</td></tr><tr><td>(9,2)</td><td>22
+</td></tr><tr><td>(9,4)</td><td>10
+</td></tr></tbody></table>
+<table cellpadding="5" border="1">
+<tbody><tr><td>BFS from node 5</td><td>max flow to node</td><td>parent with max flow
+</td></tr><tr><td>5 &#8594; 3</td><td>18</td><td>5
+</td></tr><tr><td>5 &#8594; 6</td><td>14</td><td>5
+</td></tr><tr><td>5 &#8594; 8</td><td>11</td><td>5
+</td></tr><tr><td>3 &#8594; 7</td><td>4</td><td>3
+</td></tr><tr><td>6 &#8594; 4</td><td>5</td><td>6
+</td></tr><tr><td>7 &#8594; 2</td><td>4</td><td>7
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+The path is 5, 3, 7, 2 with flow 4
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><th>Residual graph edge</th><th>Weight
+</th></tr><tr><td>(1,3)</td><td>19
+</td></tr><tr><td>(1,9)</td><td>2
+</td></tr><tr><td>(2,1)</td><td>20
+</td></tr><tr><td>(2,3)</td><td>3
+</td></tr><tr><td>(2,4)</td><td>7
+</td></tr><tr><td>(2,7)</td><td>4
+</td></tr><tr><td>(3,5)</td><td>4
+</td></tr><tr><td>(3,8)</td><td>4
+</td></tr><tr><td>(4,5)</td><td>19
+</td></tr><tr><td>(4.6)</td><td>7
+</td></tr><tr><td>(4,7)</td><td>19
+</td></tr><tr><td>(5,3)</td><td>14
+</td></tr><tr><td>(5,6)</td><td>14
+</td></tr><tr><td>(5,8)</td><td>11
+</td></tr><tr><td>(6,4)</td><td>5
+</td></tr><tr><td>(6,5)</td><td>7
+</td></tr><tr><td>(7,2)</td><td>2
+</td></tr><tr><td>(7,6)</td><td>21
+</td></tr><tr><td>(8,6)</td><td>9
+</td></tr><tr><td>(9,2)</td><td>22
+</td></tr><tr><td>(9,4)</td><td>10
+</td></tr></tbody></table>
+<table cellpadding="5" border="1">
+<tbody><tr><td>BFS from node 5</td><td>max flow to node</td><td>parent with max flow
+</td></tr><tr><td>5 &#8594; 3</td><td>14</td><td>5
+</td></tr><tr><td>5 &#8594; 6</td><td>14</td><td>5
+</td></tr><tr><td>5 &#8594; 8</td><td>11</td><td>5
+</td></tr><tr><td>6 &#8594; 4</td><td>5</td><td>6
+</td></tr><tr><td>4 &#8594; 7</td><td>5</td><td>4
+</td></tr><tr><td>7 &#8594; 2</td><td>2</td><td>7
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+The path is 5, 6, 4, 7, 2 with flow 2
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><th>Residual graph edge</th><th>Weight
+</th></tr><tr><td>(1,3)</td><td>19
+</td></tr><tr><td>(1,9)</td><td>2
+</td></tr><tr><td>(2,1)</td><td>20
+</td></tr><tr><td>(2,3)</td><td>3
+</td></tr><tr><td>(2,4)</td><td>7
+</td></tr><tr><td>(2,7)</td><td>6
+</td></tr><tr><td>(3,5)</td><td>4
+</td></tr><tr><td>(3,8)</td><td>4
+</td></tr><tr><td>(4,5)</td><td>19
+</td></tr><tr><td>(4.6)</td><td>9
+</td></tr><tr><td>(4,7)</td><td>17
+</td></tr><tr><td>(5,3)</td><td>14
+</td></tr><tr><td>(5,6)</td><td>12
+</td></tr><tr><td>(5,8)</td><td>11
+</td></tr><tr><td>(6,4)</td><td>3
+</td></tr><tr><td>(6,5)</td><td>9
+</td></tr><tr><td>(7,4)</td><td>2
+</td></tr><tr><td>(7,6)</td><td>21
+</td></tr><tr><td>(8,6)</td><td>9
+</td></tr><tr><td>(9,2)</td><td>22
+</td></tr><tr><td>(9,4)</td><td>10
+</td></tr></tbody></table>
+<table cellpadding="5" border="1">
+<tbody><tr><td>BFS from node 5</td><td>max flow to node</td><td>parent with max flow
+</td></tr><tr><td>5 &#8594; 3</td><td>14</td><td>5
+</td></tr><tr><td>5 &#8594; 6</td><td>12</td><td>5
+</td></tr><tr><td>5 &#8594; 8</td><td>11</td><td>5
+</td></tr><tr><td>6 &#8594; 4</td><td>3</td><td>6
+</td></tr><tr><td>4 &#8594; 7</td><td>3</td><td>4
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+This does not reach node 2, so it is a min cut.
+</font></p><p><font color="blue">
+The edges across the cut are (4,2) with weight 7 and (7,2) with weight 6 proving that the flow is maximum.
+</font>
+</p><p>
+4. (25 points) We wish to maximize 4a + 6b + 1c + 7d + e + f such that all variables are nonnegative and satisfy the following bounds:
+</p><p>
+</p><ol>
+<li>5a - b - d + 7e + 8f &#8804; 5
+</li><li>3b + c + 6d + 6e - 2f &#8804; 3
+</li><li>5b + 7c - 2e + 7f &#8804; 8
+</li><li>-3a - 3c + 5d + 6e - 3f &#8804; 7
+</li></ol>
+<p>
+Perform the entire simplex algorithm, showing all of the tableaux, the pivots, and the computations that selected the pivots.
+</p><p>
+<font color="blue">
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+  <tbody><tr><td></td><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th><th>f</th><th>s1</th><th>s2</th><th>s3</th><th>s4</th><th>constant</th>
+</tr><tr><td></td><td>4.00</td><td>6.00</td><td>1.00</td><td>7.00</td><td>1.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+</tr><tr><td>1</td><td>5.00</td><td>-1.00</td><td>0.00</td><td>-1.00</td><td>7.00</td><td>8.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>5.00</td>
+</tr><tr><td>2</td><td>0.00</td><td>3.00</td><td>1.00</td><td>6.00</td><td>6.00</td><td>-2.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>3.00</td>
+</tr><tr><td>3</td><td>0.00</td><td>5.00</td><td>7.00</td><td>0.00</td><td>-2.00</td><td>7.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>8.00</td>
+</tr><tr><td>4</td><td>-3.00</td><td>0.00</td><td>-3.00</td><td>5.00</td><td>6.00</td><td>-3.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>7.00</td>
+</tr></tbody></table>
+</font></p><font color="blue">
+<p><table cellpadding="5" border="1">
+<tbody><tr><th>Variable</th><th>Index</th><th>Best Constraint</th><th>Function Increase</th></tr>
+<tr><td>a</td><td>1</td><td>Row 1</td><td>4.00</td></tr>
+<tr><td>b</td><td>2</td><td>Row 2</td><td>6.00</td></tr>
+<tr><td>c</td><td>3</td><td>Row 3</td><td>1.14</td></tr>
+<tr><td>d</td><td>4</td><td>Row 2</td><td>3.50</td></tr>
+<tr><td>e</td><td>5</td><td>Row 2</td><td>0.50</td></tr>
+<tr><td>f</td><td>6</td><td>Row 1</td><td>0.63</td></tr>
+</tbody></table></p>
+
+<p>Pivoting on basic variable s2 and nonbasic variable b</p>
+<p>
+The following is the current tableau:
+</p>
+<p>
+<table cellpadding="5" border="1">
+  <tbody><tr><td></td><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th><th>f</th><th>s1</th><th>x12</th><th>s3</th><th>s4</th><th>constant</th>
+</tr><tr><td></td><td>4.00</td><td>0.00</td><td>-1.00</td><td>-5.00</td><td>-11.00</td><td>5.00</td><td>0.00</td><td>-2.00</td><td>0.00</td><td>0.00</td><td>-6.00</td>
+</tr><tr><td>1</td><td>5.00</td><td>0.00</td><td>0.33</td><td>1.00</td><td>9.00</td><td>7.33</td><td>1.00</td><td>0.33</td><td>0.00</td><td>0.00</td><td>6.00</td>
+</tr><tr><td>2</td><td>0.00</td><td>1.00</td><td>0.33</td><td>2.00</td><td>2.00</td><td>-0.67</td><td>0.00</td><td>0.33</td><td>0.00</td><td>0.00</td><td>1.00</td>
+</tr><tr><td>3</td><td>0.00</td><td>0.00</td><td>5.33</td><td>-10.00</td><td>-12.00</td><td>10.33</td><td>0.00</td><td>-1.67</td><td>1.00</td><td>0.00</td><td>3.00</td>
+</tr><tr><td>4</td><td>-3.00</td><td>0.00</td><td>-3.00</td><td>5.00</td><td>6.00</td><td>-3.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>7.00</td>
+</tr></tbody></table>
+</p>
+<p><table cellpadding="5" border="1">
+<tbody><tr><th>Variable</th><th>Index</th><th>Best Constraint</th><th>Function Increase</th></tr>
+<tr><td>a</td><td>1</td><td>Row 1</td><td>4.80</td></tr>
+<tr><td>f</td><td>6</td><td>Row 3</td><td>1.45</td></tr>
+</tbody></table></p>
+
+<p>Pivoting on basic variable s1 and nonbasic variable a</p>
+<p>
+The following is the current tableau:
+</p>
+<p>
+<table cellpadding="5" border="1">
+  <tbody><tr><td></td><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th><th>f</th><th>x13</th><th>x12</th><th>s3</th><th>s4</th><th>constant</th>
+</tr><tr><td></td><td>0.00</td><td>0.00</td><td>-1.27</td><td>-5.80</td><td>-18.20</td><td>-0.87</td><td>-0.80</td><td>-2.27</td><td>0.00</td><td>0.00</td><td>-10.80</td>
+</tr><tr><td>1</td><td>1.00</td><td>0.00</td><td>0.07</td><td>0.20</td><td>1.80</td><td>1.47</td><td>0.20</td><td>0.07</td><td>0.00</td><td>0.00</td><td>1.20</td>
+</tr><tr><td>2</td><td>0.00</td><td>1.00</td><td>0.33</td><td>2.00</td><td>2.00</td><td>-0.67</td><td>0.00</td><td>0.33</td><td>0.00</td><td>0.00</td><td>1.00</td>
+</tr><tr><td>3</td><td>0.00</td><td>0.00</td><td>5.33</td><td>-10.00</td><td>-12.00</td><td>10.33</td><td>0.00</td><td>-1.67</td><td>1.00</td><td>0.00</td><td>3.00</td>
+</tr><tr><td>4</td><td>0.00</td><td>0.00</td><td>-2.80</td><td>5.60</td><td>11.40</td><td>1.40</td><td>0.60</td><td>0.20</td><td>0.00</td><td>1.00</td><td>10.60</td>
+</tr></tbody></table>
+</p>
+<p>The maximum value of the objective function has been found.</p>
+<p>The maximum value of the objective function is: 10.80</p>
+<p>
+The maximum point is
+</p>
+</font><p><font color="blue">
+(a = 1.20, b = 1.00, c = 0.00, d = 0.00, e = 0.00, f = 0.00)
+</font>
+</p><p>
+5. (20 points) We wish to maximize a + 22b + 6c + 25d such that all variables are nonnegative and satisfy the following constraints:
+</p><p>
+</p><ol>
+<li>21a + 6b + 10c + 7d &#8804; 240
+</li><li>11a + 17b + 13c + 23d &#8804; 230
+</li><li>9a + 25b + 14c &#8804; 110
+</li></ol>
+<p>
+Perform the entire simplex algorithm, showing all of the tableaux, the pivots, and the computations that selected the pivots.
+</p><p>
+<font color="blue">
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+  <tbody><tr><td></td><th>a</th><th>b</th><th>c</th><th>d</th><th>s1</th><th>s2</th><th>s3</th><th>constant</th>
+</tr><tr><td></td><td>1.00</td><td>22.00</td><td>6.00</td><td>25.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.00</td>
+</tr><tr><td>1</td><td>21.00</td><td>6.00</td><td>10.00</td><td>7.00</td><td>1.00</td><td>0.00</td><td>0.00</td><td>240.00</td>
+</tr><tr><td>2</td><td>11.00</td><td>17.00</td><td>13.00</td><td>23.00</td><td>0.00</td><td>1.00</td><td>0.00</td><td>230.00</td>
+</tr><tr><td>3</td><td>9.00</td><td>25.00</td><td>14.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>110.00</td>
+</tr></tbody></table>
+</font></p><font color="blue">
+<p><table cellpadding="5" border="1">
+<tbody><tr><th>Variable</th><th>Index</th><th>Best Constraint</th><th>Function Increase</th></tr>
+<tr><td>a</td><td>1</td><td>Row 1</td><td>11.43</td></tr>
+<tr><td>b</td><td>2</td><td>Row 3</td><td>96.80</td></tr>
+<tr><td>c</td><td>3</td><td>Row 3</td><td>47.14</td></tr>
+<tr><td>d</td><td>4</td><td>Row 2</td><td>250.00</td></tr>
+</tbody></table></p>
+
+<p>Pivoting on basic variable s2 and nonbasic variable d</p>
+<p>
+The following is the current tableau:
+</p>
+<p>
+<table cellpadding="5" border="1">
+  <tbody><tr><td></td><th>a</th><th>b</th><th>c</th><th>d</th><th>s1</th><th>x9</th><th>s3</th><th>constant</th>
+</tr><tr><td></td><td>-10.96</td><td>3.52</td><td>-8.13</td><td>0.00</td><td>0.00</td><td>-1.09</td><td>0.00</td><td>-250.00</td>
+</tr><tr><td>1</td><td>17.65</td><td>0.83</td><td>6.04</td><td>0.00</td><td>1.00</td><td>-0.30</td><td>0.00</td><td>170.00</td>
+</tr><tr><td>2</td><td>0.48</td><td>0.74</td><td>0.57</td><td>1.00</td><td>0.00</td><td>0.04</td><td>0.00</td><td>10.00</td>
+</tr><tr><td>3</td><td>9.00</td><td>25.00</td><td>14.00</td><td>0.00</td><td>0.00</td><td>0.00</td><td>1.00</td><td>110.00</td>
+</tr></tbody></table>
+</p>
+<p><table cellpadding="5" border="1">
+<tbody><tr><th>Variable</th><th>Index</th><th>Best Constraint</th><th>Function Increase</th></tr>
+<tr><td>b</td><td>2</td><td>Row 3</td><td>15.50</td></tr>
+</tbody></table></p>
+
+<p>Pivoting on basic variable s3 and nonbasic variable b</p>
+<p>
+The following is the current tableau:
+</p>
+<p>
+<table cellpadding="5" border="1">
+  <tbody><tr><td></td><th>a</th><th>b</th><th>c</th><th>d</th><th>s1</th><th>x9</th><th>x10</th><th>constant</th>
+</tr><tr><td></td><td>-12.22</td><td>0.00</td><td>-10.10</td><td>0.00</td><td>0.00</td><td>-1.09</td><td>-0.14</td><td>-265.50</td>
+</tr><tr><td>1</td><td>17.35</td><td>0.00</td><td>5.58</td><td>0.00</td><td>1.00</td><td>-0.30</td><td>-0.03</td><td>166.37</td>
+</tr><tr><td>2</td><td>0.21</td><td>0.00</td><td>0.15</td><td>1.00</td><td>0.00</td><td>0.04</td><td>-0.03</td><td>6.75</td>
+</tr><tr><td>3</td><td>0.36</td><td>1.00</td><td>0.56</td><td>0.00</td><td>0.00</td><td>0.00</td><td>0.04</td><td>4.40</td>
+</tr></tbody></table>
+</p>
+<p>The maximum value of the objective function has been found.</p>
+<p>The maximum value of the objective function is: 265.5</p>
+<p>
+The maximum point is
+</p>
+</font><p><font color="blue">
+(a = 0.00, b = 4.40, c = 0.00, d = 6.75)
+</font>
+</p><p>
+
+
+
+
+</p></body></html>

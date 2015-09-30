@@ -1,0 +1,242 @@
+
+<!-- saved from url=(0177)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/hrbkq7bwzp14i5/ans2.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662357&Signature=VB4XfyH3m6xbo1lHs6AgS7qCggk%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring Solution to 2014 Assignment #2</h1></center>
+<p>
+
+1. The first part is to formulate the problem as a directed graph problem.
+Each arrangement is a node in the graph. Each shuffle is a directed edge in the
+graph from the one arrangement to the one obtained by the counter-clockwise
+shuffle. 
+</p><p>
+
+<font color="red">
+As emphasized in class, explicitly formulating the problem as a graph problem is important.
+It is not enough to have an implicit formulation in which one uses a term like "arrangement"
+in a graph context.
+</font>
+
+</p><p>
+
+In terms of directed graphs, the problem is to determine whether the goal node
+is reachable from the initial node and to return the path if reachability is
+possible. To obtain the path, an additional field is added to each node that
+will keep track of the tree edges. This field is the parent of the node in the
+tree structure constructed by DFS. Each node will also have a visited Boolean
+field for use in DFS.
+
+</p><p>
+
+The algorithm has the following input and output:
+</p><p>
+input: initial arrangement, goal arrangement<br>
+output: path from initial arrangement to goal arrangement or null if no such path is possible
+</p><p>
+The algorithm is a modification of the explore algorithm of DFS applied to the initial path,
+where the previsit consists of the following steps:
+</p><p>
+
+If the arrangement being visited is equal to the goal arrangement, then reverse
+the list of parent pointers and return it as the answer.
+
+</p><p>
+
+If explore returns without reaching the goal arrangement, then return null.
+
+</p><p>
+
+The algorithm is feasible because the number of nodes in the graph is at most
+9! = 362,880, and the number of edges is at most 1,451,520.
+
+</p><p>
+
+2. Here are the steps. If explore is invoked but begin and the depth of
+recursion is not shown, then that step only receives half credit.
+</p><p>
+</p><pre>DFS begin 0
+explore(1) begin 1
+previsit node 1 time 1
+explore(5) begin 2
+previsit node 5 time 2
+explore(2) begin 3
+previsit node 2 time 3
+explore(3) begin 4
+previsit node 3 time 4
+explore(4) begin 5
+previsit node 4 time 5
+node 5 was visited
+explore(6) begin 6
+previsit node 6 time 6
+node 1 was visited
+explore(8) begin 7
+previsit node 8 time 7
+node 1 was visited
+node 5 was visited
+explore(10) begin 8
+previsit node 10 time 8
+node 5 was visited
+explore(9) begin 9
+previsit node 9 time 9
+node 3 was visited
+node 5 was visited
+explore(7) begin 10
+previsit node 7 time 10
+node 2 was visited
+node 3 was visited
+node 4 was visited
+end 10
+end 9
+end 8
+end 7
+end 6
+node 7 was visited
+end 5
+node 7 was visited
+node 9 was visited
+end 4
+node 7 was visited
+end 3
+node 4 was visited
+node 8 was visited
+node 9 was visited
+node 10 was visited
+end 2
+node 6 was visited
+node 8 was visited
+end 1
+end 0
+</pre>
+<p>
+3. Here are the results of the DFS on this directed graph.
+</p><p>
+</p><pre>node 1 pre and posttimes 1, 20
+node 2 pre and posttimes 3, 14
+node 3 pre and posttimes 4, 13
+node 4 pre and posttimes 15, 16
+node 5 pre and posttimes 6, 9
+node 6 pre and posttimes 2, 17
+node 7 pre and posttimes 5, 12
+node 8 pre and posttimes 18, 19
+node 9 pre and posttimes 10, 11
+node 10 pre and posttimes 7, 8
+(1,6) tree edge
+(1,8) tree edge
+(1,9) forward edge
+(2,3) tree edge
+(2,5) forward edge
+(2,7) forward edge
+(3,7) tree edge
+(3,9) forward edge
+(3,10) forward edge
+(4,5) cross edge
+(5,10) tree edge
+(6,2) tree edge
+(6,4) tree edge
+(7,5) tree edge
+(7,6) back edge
+(7,9) tree edge
+(8,6) cross edge
+(8,7) cross edge
+(8,10) cross edge
+</pre>
+<p>
+There is a back edge so no topological sort is possible.
+</p><p>
+
+4. The first part is to formulate the problem as a directed graph problem.
+Each person on the site is a node. Each directed friendship link is a directed
+edge from the person to the friend of the person.
+</p><p>
+
+<font color="red">
+As emphasized in class, explicitly formulating the problem as a graph problem is important.
+It is not enough to have an implicit formulation in which one uses a term like "person"
+in a graph context.
+</font>
+
+</p><p>
+
+Add a field to each node with the number of acquaintances.
+
+</p><p>
+
+input: the directed graph of persons and their friendship links<br>
+output: each person has the number of acquaintances as a field.
+
+</p><p>
+
+</p><pre>for each v in V
+  set v.numberOfAcquaintances to 0
+  for each adjacent vertex w of v
+    set v.numberOfAcquaintances to v.numberOfAcquaintances + size of the adjacency list of w
+</pre>
+
+<p>
+
+The loop over the vertexes of the graph (not including the inner loop) takes time &#920;(V).
+Since every edge is examined exactly once in the inner loop, it takes time &#920;(E).
+So the total time is &#920;(V+E). So the algorithm is linear.
+
+</p><p>
+
+5. This can be solved by modifying the explore algorithm of DFS.  To obtain the
+cycle, an additional field is added to each node that will keep track of the
+tree edges. This field is the parent of the node in the tree structure
+constructed by DFS. The explore algorithm is applied to the specified graph and
+node:
+
+</p><p>
+input: graph G and node A<br>
+output: a cycle containing A or null if there is no such cycle.
+</p><p>
+
+The previsit method is modified as follows:
+
+</p><p>
+
+If the edge is a back edge and the destination of the back edge is A, then
+reverse the list of parent pointers and add the back edge to form the cycle.
+Return this cycle as the solution.
+
+</p><p>
+
+If explore returns without finding a cycle, then return null.
+
+</p><p>
+
+The following is the example:
+
+</p><p>
+
+</p><pre>explore(4) begin 0
+explore(5) begin 1
+explore(2) begin 2
+explore(3) begin 3
+explore(7) begin 4
+node 5 was visited
+explore(6) begin 5
+node 2 was visited
+node 4 was visited
+reverse and adjust the parent pointer list
+return the reversed list: 4-&gt;5-&gt;2-&gt;3-&gt;7-&gt;6-&gt;4
+</pre>
+
+<p>
+
+<font color="red">
+An occasional mistake was to use the Tarjan SCC algorithm for this problem. While this is not
+an error in itself, it will result in an error if one simply finds the SCC of the specified
+vertex and then does nothing more than check that the SCC has more than one vertex. While
+this will show that there is a cycle, it does not find the cycle, as required by the problem.
+Unfortunately, finding a cycle within an SCC that contains a specified vertex is no easier
+than finding a cycle within the original graph that contains a specified vertex. So finding the SCC
+does not help significantly in solving this problem.
+</font>
+
+
+
+
+</p></body></html>

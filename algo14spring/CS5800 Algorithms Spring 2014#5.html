@@ -1,0 +1,156 @@
+
+<!-- saved from url=(0179)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/hu949cyo47a1jp/ans5.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662314&Signature=6BY2HAONz7V3wNcN%2Buh1y5LdXE0%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Assignment #5</h1></center>
+<p>
+
+1. (25 points) Run the Kruskal algorithm on the following undirected graph:
+<table cellpadding="5" border="0">
+<tbody><tr><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length
+</th></tr><tr><td>{1,3}</td><td>4</td><td>{1,5}</td><td>8</td><td>{1,6}</td><td>2</td><td>{1,8}</td><td>8
+</td></tr><tr><td>{2,3}</td><td>3</td><td>{2,4}</td><td>10</td><td>{2,8}</td><td>10</td><td>{2,9}</td><td>6
+</td></tr><tr><td>{3,4}</td><td>9</td><td>{3,5}</td><td>11</td><td>{3,6}</td><td>6</td><td>{3,7}</td><td>5
+</td></tr><tr><td>{4,5}</td><td>6</td><td>{4,6}</td><td>5</td><td>{4,7}</td><td>6</td><td>{4,8}</td><td>8
+</td></tr><tr><td>{5,6}</td><td>9</td><td>{5,7}</td><td>7</td><td>{5,9}</td><td>7</td><td>{6,7}</td><td>4
+</td></tr><tr><td>{7,8}</td><td>4</td><td>{7,9}</td><td>9</td><td>{8,9}</td><td>10
+</td></tr></tbody></table>
+</p><p>
+Show the method calls during each step as well as the union-find
+structure after each step.  It is not necessary to show the steps for
+any sorting that is done.  The union-find should not use any enhancements.
+In the union algorithm, when combining trees,
+the new root should be from the tree specified by the first parameter to union.
+</p><p>
+<font color="blue">
+The following shows the edges that are used to invoke the union-find algorithm
+and the resulting forest after each invocation.
+</font></p><p><font color="blue">
+</font></p><pre><font color="blue">{1,6} is added
+1 &#8592; 6
+
+{2,3} is added
+1 &#8592; 6; 2 &#8592; 3
+
+{1,3} is added
+1 &#8592; 6, 1 &#8592; 2 &#8592; 3
+
+{6,7} is added
+1 &#8592; 6, 1 &#8592; 2 &#8592; 3, 1 &#8592; 7
+
+{7,8} is added
+1 &#8592; 6, 1 &#8592; 2 &#8592; 3, 1 &#8592; 7, 1 &#8592; 8
+
+{3,7} is not added
+
+{4,6} is added
+4 &#8592; 1, 1 &#8592; 6, 1 &#8592; 2 &#8592; 3, 1 &#8592; 7, 1 &#8592; 8
+
+{2,9} is added
+4 &#8592; 1, 1 &#8592; 6, 1 &#8592; 2 &#8592; 3, 1 &#8592; 7, 1 &#8592; 8, 4 &#8592; 9
+
+{3,6} is not added
+
+{4,5} is added
+4 &#8592; 1, 1 &#8592; 6, 1 &#8592; 2 &#8592; 3, 1 &#8592; 7, 1 &#8592; 8, 4 &#8592; 9, 4 &#8592; 5
+</font></pre><font color="blue">
+The algorithm terminates because there are enough edges.
+</font>
+<p>
+2. (25 points) Run the Jarník algorithm on the following undirected graph:
+<table cellpadding="5" border="0">
+<tbody><tr><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length
+</th></tr><tr><td>{1,3}</td><td>7</td><td>{1,4}</td><td>35</td><td>{1,7}</td><td>38</td><td>{1,8}</td><td>41
+</td></tr><tr><td>{2,3}</td><td>49</td><td>{2,5}</td><td>39</td><td>{3,4}</td><td>20</td><td>{3,6}</td><td>2
+</td></tr><tr><td>{3,7}</td><td>21</td><td>{3,9}</td><td>24</td><td>{4,5}</td><td>25</td><td>{4,7}</td><td>43
+</td></tr><tr><td>{4,8}</td><td>20</td><td>{4,9}</td><td>5</td><td>{5,8}</td><td>27</td><td>{6,8}</td><td>12
+</td></tr><tr><td>{6,9}</td><td>37</td><td>{7,9}</td><td>25
+</td></tr></tbody></table>
+</p><p>
+The initial node is node 6. It is not necessary to show the structure
+of the priority queue.
+
+</p><p>
+<font color="blue">
+</font></p><pre><font color="blue">{3,6} is added
+{1,3} is added
+{6,8} is added
+{3,4} is added
+{4,9} is added
+{3,7} is added
+{4,5} is added
+{2,5} is added
+</font></pre><font color="blue">
+</font>
+<p>
+
+3. (20 points) A manufacturing company manufactures items by a sequence of
+steps.  Each step modifies an item of one kind to produce an item of another
+kind. A kind of item that cannot be modified to produce another kind of item is
+a <i>product</i>. A kind of item that cannot be produced from another kind of
+item is a <i>raw material</i>. Each kind of raw material has a cost, each
+manufacturing step has a cost and each kind of product has a sale price. The
+costs and sale prices change each day. In addition, new manufacturing steps and
+kinds of product can be introduced each day. Each day the company wishes to use
+the one kind of raw material to produce one kind of product that has the
+maximum profit (i.e., sale price minus the cost of the raw material and steps).
+This is called the <em>process</em> for the day.  Develop an algorithm that
+will efficiently determine the process for the day.  Explain why your algorithm
+is efficient.
+</p><p>
+<font color="blue">
+Formulate this as a graph problem. A weighted directed graph is defined as
+follows.  Each kind of material is a node in the graph.  There is an additional
+node distinguished node as well. There is an edge from the distinguished node
+to each raw material, and for all other nodes there is an edge for the step
+that converts the one kind of the material to the other one.  The weight of an
+edge is the cost of the step. For the edges from the distinguished node, the
+weight is the cost of the raw material. Use a single-source shortest path
+algorithm. This takes time O((V+E)log(V)). After running this algorithm, one
+must then determine the product with the maximum profit. This requires
+computing the maximum of the sale prices minus costs for the products. The
+products are given as inputs to the algorithm, so it is not necessary to find
+the products. The number of products is at most the number of nodes, so
+computing the maximum profit does not affect the time complexity.
+
+</font>
+</p><p>
+4. (15 points) The company in #3 above has problems with accidents, so it adds
+safety devices to every step in its manufacturing operations. This adds a
+constant cost <code>c</code> to every step. The same cost is also added to each
+item of raw material as a safety check. The sale prices are not changed. Would
+this affect the result of your algorithm?  In other words, could this change
+the process that maximizes the profit? Prove your answer (i.e., either give an
+example, or prove it cannot happen).
+
+</p><p>
+<font color="blue">
+It is easy to show that this can change the result of the algorithm. For example, if one has
+two raw materials A and B, two products C and D, and one intermediate material E
+with steps from A to C, and from B to E to D. Suppose all of the costs are 1,
+except for the step from A to C, which has cost 2.1, and the sale prices are both 5.
+Then D will be the most profitable. However, if 0.2 is added to all costs, then
+C will be the most profitable.
+</font>
+</p><p>
+5. (15 points) Suppose that instead of adding a constant cost as in #4 above,
+one adds a fixed percentage cost (e.g., 5% is added to the cost of each step and raw
+material).  Would this change the process that maximizes the profit? Prove your
+answer (i.e., either give an example, or prove it cannot happen).
+</p><p>
+<font color="blue">
+Adding a percentage p is the same as multiplying all costs by a constant factor;
+namely, by (1+p). If the sale prices of all products are the same, then multiplying all costs
+by a constant factor will not change the process that maximizes the profit.
+However, if the sale prices are different, then the process that maximizes the profit
+may be different. For example, if one process costs 9 and another costs 95, and the product
+of the first process has sale price 10 and the other sale price is 100, then the second
+process is more profitable (5 versus 1). However, if 10% is added to the costs, then
+the first product has profit 0.1 while the second product has a loss of 4.5.
+</font>
+
+
+
+</p></body></html>

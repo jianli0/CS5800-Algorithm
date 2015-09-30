@@ -1,0 +1,105 @@
+
+<!-- saved from url=(0180)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/ht37hgwyvdc5ik/asst9.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662518&Signature=uSvD3masLhEvqLuNV8TvAjRJf%2FU%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Assignment #9</h1></center>
+<p>
+1. (25 points) A message has been encrypted using a substitution cypher. Only the letters and the space (27 in all) were used
+in the message and the encrypted message. You must perform two of the steps in the process of decrypting the message.
+The encrypted message is: ofduwbrxbxvfbofduwwuwdbxvfbsuwdbjruhbdlrifetbrwhbdpbpwbxueebtpgbypqfbxpbxvfbfwhbxvfwbjxpcb
+</p><p>
+The bigram frequencies are:
+</p><p>
+<table cellpadding="1" border="1">
+<tbody><tr><td></td><td>space</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z
+</td></tr><tr><td>space</td><td>0</td><td>3396</td><td>1017</td><td>911</td><td>862</td><td>391</td><td>751</td><td>577</td><td>1590</td><td>1983</td><td>122</td><td>263</td><td>806</td><td>959</td><td>584</td><td>1459</td><td>510</td><td>186</td><td>534</td><td>2735</td><td>4678</td><td>266</td><td>283</td><td>1873</td><td>2</td><td>552</td><td>2
+</td></tr><tr><td>a</td><td>696</td><td>0</td><td>214</td><td>157</td><td>441</td><td>0</td><td>63</td><td>160</td><td>25</td><td>715</td><td>12</td><td>125</td><td>927</td><td>183</td><td>1602</td><td>3</td><td>108</td><td>0</td><td>703</td><td>899</td><td>1162</td><td>76</td><td>168</td><td>75</td><td>4</td><td>257</td><td>5
+</td></tr><tr><td>b</td><td>5</td><td>80</td><td>66</td><td>0</td><td>1</td><td>523</td><td>0</td><td>0</td><td>0</td><td>110</td><td>7</td><td>0</td><td>105</td><td>1</td><td>0</td><td>203</td><td>0</td><td>0</td><td>59</td><td>28</td><td>8</td><td>203</td><td>0</td><td>0</td><td>0</td><td>75</td><td>0
+</td></tr><tr><td>c</td><td>9</td><td>309</td><td>0</td><td>16</td><td>0</td><td>701</td><td>0</td><td>0</td><td>449</td><td>30</td><td>0</td><td>176</td><td>66</td><td>0</td><td>0</td><td>341</td><td>0</td><td>0</td><td>108</td><td>1</td><td>74</td><td>103</td><td>0</td><td>0</td><td>0</td><td>8</td><td>0
+</td></tr><tr><td>d</td><td>3237</td><td>70</td><td>1</td><td>0</td><td>62</td><td>440</td><td>10</td><td>31</td><td>1</td><td>227</td><td>1</td><td>0</td><td>61</td><td>0</td><td>52</td><td>432</td><td>0</td><td>0</td><td>87</td><td>85</td><td>0</td><td>60</td><td>17</td><td>3</td><td>0</td><td>45</td><td>0
+</td></tr><tr><td>e</td><td>5840</td><td>761</td><td>12</td><td>128</td><td>932</td><td>481</td><td>72</td><td>122</td><td>32</td><td>94</td><td>0</td><td>14</td><td>436</td><td>253</td><td>932</td><td>28</td><td>140</td><td>0</td><td>1817</td><td>570</td><td>318</td><td>1</td><td>191</td><td>44</td><td>104</td><td>213</td><td>14
+</td></tr><tr><td>f</td><td>842</td><td>108</td><td>0</td><td>0</td><td>0</td><td>149</td><td>120</td><td>0</td><td>0</td><td>166</td><td>0</td><td>0</td><td>34</td><td>0</td><td>0</td><td>320</td><td>0</td><td>0</td><td>85</td><td>0</td><td>74</td><td>96</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0
+</td></tr><tr><td>g</td><td>1033</td><td>217</td><td>0</td><td>0</td><td>0</td><td>285</td><td>0</td><td>17</td><td>311</td><td>81</td><td>0</td><td>0</td><td>60</td><td>0</td><td>12</td><td>198</td><td>1</td><td>0</td><td>204</td><td>61</td><td>2</td><td>44</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1
+</td></tr><tr><td>h</td><td>667</td><td>1146</td><td>4</td><td>0</td><td>1</td><td>3777</td><td>1</td><td>0</td><td>0</td><td>779</td><td>1</td><td>0</td><td>4</td><td>5</td><td>3</td><td>569</td><td>0</td><td>0</td><td>82</td><td>4</td><td>225</td><td>56</td><td>0</td><td>0</td><td>0</td><td>44</td><td>0
+</td></tr><tr><td>i</td><td>548</td><td>32</td><td>14</td><td>596</td><td>687</td><td>190</td><td>160</td><td>209</td><td>0</td><td>6</td><td>0</td><td>97</td><td>310</td><td>221</td><td>2023</td><td>172</td><td>17</td><td>0</td><td>214</td><td>577</td><td>1325</td><td>2</td><td>59</td><td>0</td><td>8</td><td>0</td><td>26
+</td></tr><tr><td>j</td><td>0</td><td>6</td><td>0</td><td>1</td><td>0</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>17</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>102</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>k</td><td>386</td><td>8</td><td>0</td><td>0</td><td>0</td><td>364</td><td>0</td><td>0</td><td>0</td><td>210</td><td>0</td><td>0</td><td>22</td><td>0</td><td>138</td><td>0</td><td>0</td><td>0</td><td>1</td><td>18</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>9</td><td>0
+</td></tr><tr><td>l</td><td>678</td><td>307</td><td>4</td><td>1</td><td>334</td><td>729</td><td>145</td><td>1</td><td>0</td><td>852</td><td>0</td><td>59</td><td>678</td><td>8</td><td>0</td><td>322</td><td>12</td><td>0</td><td>4</td><td>43</td><td>48</td><td>14</td><td>12</td><td>15</td><td>0</td><td>436</td><td>0
+</td></tr><tr><td>m</td><td>338</td><td>306</td><td>61</td><td>0</td><td>0</td><td>579</td><td>10</td><td>0</td><td>0</td><td>170</td><td>0</td><td>0</td><td>1</td><td>15</td><td>15</td><td>314</td><td>74</td><td>0</td><td>0</td><td>25</td><td>0</td><td>124</td><td>0</td><td>0</td><td>0</td><td>68</td><td>0
+</td></tr><tr><td>n</td><td>2029</td><td>89</td><td>0</td><td>174</td><td>1266</td><td>554</td><td>19</td><td>1138</td><td>2</td><td>159</td><td>3</td><td>109</td><td>87</td><td>0</td><td>50</td><td>541</td><td>2</td><td>6</td><td>2</td><td>130</td><td>456</td><td>54</td><td>19</td><td>5</td><td>17</td><td>87</td><td>0
+</td></tr><tr><td>o</td><td>1332</td><td>17</td><td>38</td><td>95</td><td>98</td><td>46</td><td>618</td><td>37</td><td>45</td><td>121</td><td>0</td><td>208</td><td>165</td><td>284</td><td>1051</td><td>444</td><td>103</td><td>11</td><td>673</td><td>122</td><td>421</td><td>1554</td><td>86</td><td>538</td><td>11</td><td>11</td><td>2
+</td></tr><tr><td>p</td><td>211</td><td>115</td><td>2</td><td>0</td><td>0</td><td>285</td><td>0</td><td>0</td><td>61</td><td>128</td><td>0</td><td>0</td><td>175</td><td>0</td><td>0</td><td>175</td><td>114</td><td>0</td><td>87</td><td>31</td><td>54</td><td>68</td><td>0</td><td>0</td><td>0</td><td>15</td><td>0
+</td></tr><tr><td>q</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>208</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>r</td><td>1527</td><td>267</td><td>1</td><td>54</td><td>177</td><td>1145</td><td>8</td><td>63</td><td>19</td><td>355</td><td>0</td><td>59</td><td>45</td><td>75</td><td>85</td><td>346</td><td>69</td><td>0</td><td>86</td><td>340</td><td>242</td><td>80</td><td>7</td><td>8</td><td>0</td><td>369</td><td>0
+</td></tr><tr><td>s</td><td>2239</td><td>652</td><td>0</td><td>31</td><td>0</td><td>785</td><td>0</td><td>1</td><td>851</td><td>253</td><td>0</td><td>47</td><td>67</td><td>25</td><td>55</td><td>419</td><td>84</td><td>6</td><td>0</td><td>183</td><td>597</td><td>158</td><td>0</td><td>30</td><td>0</td><td>6</td><td>0
+</td></tr><tr><td>t</td><td>3417</td><td>246</td><td>0</td><td>43</td><td>0</td><td>750</td><td>11</td><td>0</td><td>3475</td><td>466</td><td>0</td><td>0</td><td>277</td><td>18</td><td>12</td><td>997</td><td>0</td><td>0</td><td>153</td><td>158</td><td>335</td><td>189</td><td>0</td><td>77</td><td>0</td><td>55</td><td>0
+</td></tr><tr><td>u</td><td>415</td><td>18</td><td>30</td><td>171</td><td>51</td><td>161</td><td>5</td><td>172</td><td>0</td><td>81</td><td>0</td><td>0</td><td>330</td><td>49</td><td>244</td><td>3</td><td>210</td><td>0</td><td>496</td><td>422</td><td>588</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>14
+</td></tr><tr><td>v</td><td>2</td><td>19</td><td>0</td><td>0</td><td>0</td><td>695</td><td>0</td><td>0</td><td>0</td><td>59</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>63</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>3</td><td>0
+</td></tr><tr><td>w</td><td>360</td><td>584</td><td>0</td><td>0</td><td>10</td><td>347</td><td>5</td><td>0</td><td>507</td><td>366</td><td>0</td><td>0</td><td>31</td><td>0</td><td>139</td><td>270</td><td>0</td><td>0</td><td>32</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>x</td><td>15</td><td>12</td><td>0</td><td>13</td><td>0</td><td>24</td><td>0</td><td>0</td><td>0</td><td>22</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>22</td><td>0</td><td>0</td><td>0</td><td>38</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>y</td><td>1465</td><td>8</td><td>10</td><td>0</td><td>0</td><td>97</td><td>0</td><td>0</td><td>0</td><td>50</td><td>0</td><td>0</td><td>1</td><td>4</td><td>1</td><td>495</td><td>55</td><td>0</td><td>0</td><td>37</td><td>34</td><td>0</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>z</td><td>0</td><td>7</td><td>0</td><td>0</td><td>0</td><td>31</td><td>0</td><td>0</td><td>0</td><td>10</td><td>0</td><td>0</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>14
+</td></tr></tbody></table>
+</p><p>
+The proposed decryption map is:
+<table cellpadding="5" border="1">
+<tbody><tr><td>space</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z
+</td></tr><tr><td>l</td><td>m</td><td>v</td><td>k</td><td>t</td><td>z</td><td>p</td><td>a</td><td>i</td><td>o</td><td>g</td><td>x</td><td>h</td><td>y</td><td>q</td><td>e</td><td>s</td><td>space</td><td>b</td><td>n</td><td>u</td><td>j</td><td>r</td><td>d</td><td>f</td><td>c</td><td>w
+</td></tr></tbody></table>
+</p><p>
+
+The first step uses the transposition of 'a' and 'c'. Show what to do in this
+case. Show all of the details of the computation, especially the new decryption map.
+
+</p><p>
+
+The next step uses the transposition of 'h' and 'm'. Again show what to do in this case.
+Show all of the details of the computation, especially the new decryption map.
+
+</p><p>
+
+2. (25 points) A community has 3600 persons. On each day each person encounters
+24 persons on average. A virus is introduced to the community by infecting one person.
+If a person is infected, the person remains infectious for 4 days on the average. The
+probability of an infectious person infecting another person during an encounter is
+the probability 0.1. Model this situation using a Markov chain in which the unit
+of time is one second. You may assume that at each second at most one person becomes
+infected and at most one person ceases to be infectious. Note that there is no
+immunity to the virus.
+
+</p><p>
+3. (20 points) Compute the invariant distribution(s) of the following stochastic matrix:
+</p><p>
+</p><center>
+<table cellpadding="5">
+  <tbody><tr><td>0.1</td><td>0.2</td><td>0.4</td><td>0.3
+  </td></tr><tr><td>0</td><td>0.2</td><td>0.7</td><td>0.1
+  </td></tr><tr><td>0.4</td><td>0</td><td>0.4</td><td>0.2
+  </td></tr><tr><td>0.5</td><td>0.3</td><td>0.1</td><td>0.1
+</td></tr></tbody></table>
+</center>
+<p>
+Starting from the pure state (0,0,0,1), compute the next 3 (possibly mixed) states of the Markov chain.
+</p><p>
+4. (20 points) Modify the matrix in Question 3 using the Metropolis-Hastings method so
+that it has (0.25, 0.25, 0.25, 0.25) as an invariant distribution. Show your computation.
+Check that your modified matrix has this property.
+</p><p>
+
+5. (10 points) In the game of cricket (or baseball) the players on a team take
+turns being the batsman (or batter in baseball) in a specified order. In
+baseball this is called the batting <em>lineup</em>. You have a program that
+will simulate a cricket match (or baseball game). The lineup order is
+considered to be an important strategic decision by a team.
+
+</p><p>
+Develop an algorithm using pseudo code for comparing one lineup with another
+one.
+
+
+
+
+
+</p></body></html>

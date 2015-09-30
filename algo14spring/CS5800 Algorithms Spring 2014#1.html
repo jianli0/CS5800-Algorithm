@@ -1,0 +1,103 @@
+
+<!-- saved from url=(0181)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/hr5bajljxcs3ws/ans1.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662364&Signature=VSQoVlV3nmV%2BjDSpdN%2BsDITkryw%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Solution to Assignment #1</h1></center>
+<p>
+1. Write pseudocode for the algorithm to compute the maximum of an array of numbers.
+Prove that your algorithm is correct.
+</p><p>
+input: nonempty array<br>
+output: maximum of array<br>
+more succinctly: int max(array)<br>
+</p><pre>  x = array[0]
+  for i from 1 to length(array) - 1
+    if x less than array[i] then set x = array[i]
+  return x
+</pre>
+<p>
+There will be various proofs depending on what n means in the inductive hypothesis. Does it mean that the loop has been executed n times or n-1 times?
+The following uses the n-1 times convention.
+</p><p>
+Theorem to be proved: The function computes the maximum value of the elements of a nonempty array.
+</p><p>
+Inductive hypothesis H(n): After the loop body has been executed n-1 times, the variable x has the maximum value of the first n values of the array.
+</p><p>
+Initialization. After the loop have been executed 0 times, the variable x is array[0] which is the maximum value of the first 1 values in the array. Therefore H(1) is true.
+</p><p>
+Maintenance. Assum H(n) is true for n greater than 0 and less than or equal to length(array). To show H(n+1) the loop body is executed with i equal to n.
+</p><ol>
+<li>If the variable x is less than array[n] then by the inductive hypothesis the maximum of the first n values of the array is less than the n+1<sup>st</sup> value. Therefore the maximum of the first n+1 values is array[n]. Setting maximum to this value implies that H(n+1) is true.
+</li><li>If the variable x is not less than array[n] then by the inductive hypothesis the maximum of the first n values of the array is greater than or equal to the n+1<sup>st</sup> value. Therefore the maximum of the first n+1 values is the variable x. Therefore H(n+1) is true.
+</li></ol>
+<p>
+Termination. If H(length(array)) is true. then the variable x has the maximum value of the first length(array) values of the array. This is the entire array, so the variable x is the maximum of the entire array. This proves the theorem.
+</p><p>
+2. Arrange the following functions in decreasing order of growth, and prove that
+the functions are in this order by using asymptotic notation:
+</p><ol>
+<li>2<sup>n<sup>2</sup></sup>. Since log<sub>2</sub>(2<sup>n<sup>2</sup></sup>) = n<sup>2</sup>, 2<sup>n<sup>2</sup></sup> has greater order of growth than
+n!<sup>2</sup>.
+</li><li>n!<sup>2</sup> = &#920;(n<sup>n+0.5</sup> e<sup>-n</sup>). So log(n!<sup>2</sup>) = &#920;((n+0.5)log(n)-n) = &#920;(n log(n))
+</li><li>n<sup>10</sup> + 1.1<sup>n</sup> = &#920;(1.1<sup>n</sup>) by omitting terms with lower order of growth. Now log(1.1<sup>n</sup>) = &#920;(n) so this
+has lower order of growth than the previous function.
+</li><li>100 + 5 n<sup>2</sup> + n<sup>4</sup> = &#920;(n<sup>4</sup>) by omitting terms with lower order of growth. The previous function is an exponential, so
+this function has lower order of growth.
+</li><li>n<sup>2</sup> / log(n) = &#937;(n<sup>p</sup>) for any p smaller than 2 and also has order of growth O(n<sup>2</sup>). So this function has lower order
+of growth than the previous function.
+</li><li>log(3<sup>n</sup>) = n log(3) = &#920;(n) so it has lower order of growth than the previous function.
+</li><li>log(n) + n<sup>1/3</sup> = &#920;(n<sup>1/3</sup>) because &#920;(log(n)) has lower order of growth than &#920;(n<sup>p</sup>) for any positive p. So this function is
+asymptotically smaller than &#920;(n) because its exponent is smaller.
+</li><li>log(n*n) = 2log(n) = &#920;(log(n)) is asymptotically smaller than &#920;(n<sup>p</sup>) for any positive p, and in particular, for p=1/3.
+</li><li>log(log(n)) = &#920;(log(log(n))) so it is asymptotically smaller than &#920;(log(n)) because log(n) has lower order of growth than n.
+</li><li>n<sup>-1/3</sup> = O(1) so it is asymptotically smaller than &#920;(log(log(n))) which increases to infinity.
+</li></ol>
+<p>
+3. Solve the following recurrences:
+</p><ol>
+<li>T(n) = 3 T(n/9) + &#920;(&#8730;n). Since c=0.5 and p=0.5, T(n) = &#920;(n<sup>0.5</sup> log(n)).
+</li><li>T(n) = 6 T(n/5) + &#920;(n<sup>1.1</sup>). Since c=1.1 and p=1.11328, T(n) = &#920;(n<sup>1.11328</sup>).
+</li><li>T(n) = 3 T(3n/4) + &#920;(n<sup>4</sup>). Since c=4 and p is smaller than 4, T(n)=&#920;(n<sup>4</sup>).
+</li><li>T(n) = 2 T(3n/5) + T(n/2) + T(n/3) + &#920;(n<sup>2</sup> log(n)). Since c=2 and p=2.12757, T(n) = &#920;(n<sup>2.12757</sup>).
+</li><li>T(n) = 3 T(2n/5) + T(n/3) + T(n/5) + &#920;(n&#8730;n). Since c=1.5 and p=1.53968, T(n) = &#920;(n<sup>1.53968</sup>).
+</li></ol>
+<p>
+4. For the following three functions of a positive integer, arrange them by increasing order of growth,
+and find the crossover points of each pair of functions.
+</p><p>
+</p><ul>
+<li>10 log<sub>2</sub>(n)
+</li><li>n<sup>2</sup> + n + 3
+</li><li>2<sup>n</sup>
+</li></ul>
+<p>
+They are already in increasing order of growth. Note that one must explicitly say this to get credit.
+</p><p>
+Crossovers are:
+</p><ul>
+<li>crossover for functions 1 and 2: from n=1 to n=2 function 1 goes from smaller to larger
+</li><li>crossover for functions 1 and 2: from n=3 to n=4 function 1 goes from larger to smaller
+</li><li>crossover for functions 1 and 3: from n=1 to n=2 function 1 goes from smaller to larger
+</li><li>crossover for functions 1 and 3: from n=4 to n=5 function 1 goes from larger to smaller
+</li><li>crossover for functions 2 and 3: from n=5 to n=6 function 2 goes from larger to smaller
+</li></ul>
+<p>
+5. The following are the steps:
+</p><p>
+</p><pre>begin 0
+compute 23%20=3 and select 2 as the pivot
+split produces { 1, 1 } { 2, 2 } { 19, 11, 13, 28, 9, 46, 3, 27, 19, 31, 21, 25, 47, 17, 11, 24 }
+select the 6th smallest number of { 19, 11, 13, 28, 9, 46, 3, 27, 19, 31, 21, 25, 47, 17, 11, 24 }
+begin 1
+compute 29%16=13 and select 17 as the pivot
+split produces  { 11, 13, 9, 3, 11 } { 17 } { 19, 28, 46, 27, 19, 31, 21, 25, 47, 24 }
+return 17
+end 1
+end 0
+</pre>
+
+
+
+</body></html>

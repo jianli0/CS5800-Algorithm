@@ -1,0 +1,501 @@
+
+<!-- saved from url=(0179)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/hud3twrk8ryrf/ans10.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662258&Signature=wLS9oQxvE9Z3VU3sp7%2FW0sMIMcE%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Solution to Assignment #10</h1></center>
+<p>
+
+1. (15 points) Your company requires that you develop a program that will
+generate a random widget.  You don't actually know what a widget is because
+that is a trade secret. However, you have been given a program that will
+generate a random gadget. (You don't know what a gadget is either.) You also
+have been given a program that will test whether a gadget is a widget. However,
+the test program is very crude. If your gadget is a widget, your test program
+will be wrong 99% of the time. If your gadget is not a widget, your test
+program will always be correct. Your program can be run repeatedly on the same
+gadget, and each test result will be independent. Your program must be 99%
+certain that it has a widget.  Develop an algorithm using pseudo-code for
+generating a random widget.
+
+</p><p>
+
+<font color="blue">
+</font></p><pre><font color="blue">Input: None
+Output: A widget with 99% certainty
+  Loop forever
+    Generate a random gadget
+    Test gadget for being a widget with 99% certainty
+    If gadget is widget return the gadget
+  End of loop
+</font></pre><font color="blue">
+<p>
+</p><pre>Test gadget for being a widget with 99% certainty
+Input: gadget
+Output: True if gadget is widget with 99% certainty, else false.
+  Loop 459 times
+    Perform test of gadget
+    If gadget is widget return true
+  End of Loop
+  return false
+</pre>
+</font><p><font color="blue">
+
+If any of the gadget tests say the gadget is a widget, then the gadget is a
+widget, and the tests can be stopped, since the only way that the test will
+report that the gadget is a widget is when it really is a widget. However, this
+does not happen very often. We need to repeat the test until we are 99% certain
+that the gadget is not a widget at which point we try another gadget. The
+probability that a single test will say that the gadget is not a widget even
+though the gadget is a widget is 0.99. The probability of n independent tests
+saying that the gadget is not a widget even though the gadget is a widget is
+0.99<sup>n</sup>.  We want this to be less than 0.01. Solving 0.99<sup>n</sup>
+= 0.01 for n gives n = 458.21. So n must be 459 to ensure that 0.99<sup>n</sup>
+will be at most 0.01.
+
+</font>
+</p><p>
+
+2. (20 points) Now suppose that the program in Question #1 above for testing
+whether a gadget is a widget will also sometimes be wrong when the gadget is
+not a widget. Modify your algorithm to handle the following two cases:
+</p><ol type="a">
+<li>When the gadget is not a widget, the test will be incorrect 10% of the time.
+
+<font color="blue">
+As explained in class, we must choose n so that the confidence intervals
+do not overlap. If the probabilities are p and q, and if the number of
+tests n that are performed is large, then the normal distribution is a
+very good approximation. The 99% confidence intervals are
+<pre>[np-2.6&#8730;(np(1-p)),np+2.6&#8730;(np(1-p))]
+</pre>
+and
+<pre>[nq-2.6&#8730;(nq(1-q)),nq+2.6&#8730;(nq(1-q))]
+</pre>
+So we must solve np+2.6&#8730;(np(1-p)) = nq-2.6&#8730;(nq(1-q)) for n
+when p=0.01 and q=0.1. The result is n=133.2. So n must be 134
+to ensure that the two confidence intervals are disjoint. The common endpoint
+is about 4.3. Here is the pseudocode:
+<p>
+</p><pre>Input: None
+Output: A widget with 99% certainty
+  Loop forever
+    Generate a random gadget
+    Test gadget for being a widget with 99% certainty
+    If gadget is widget return the gadget
+  End of loop
+</pre>
+<p>
+</p><pre>Test gadget for being a widget with 99% certainty
+Input: gadget
+Output: True if gadget is widget with 99% certainty, else false.
+  widget count = 0
+  Loop 134 times
+    Perform test of gadget
+    if result of test is widget increment widget count
+  End of Loop
+  if widget count less than or equal to 4 return true
+  else return false
+</pre>
+<p>
+
+It is counter-intuitive that when the widget count is higher than 4 one should
+conclude that the gadget is not a widget. One would think that if the test
+reports more often that the gadget is a widget, then it is more likely to be a
+widget.  However, when the gadget is a widget, the test will report that the
+gadget is a widget only 1% of the time, but if the gadget is not a widget, the
+test reports that it is a widget much more often: 10% of the time.
+
+</p><p>
+
+The following more sophisticated analysis requires a background in probability
+and statistics:
+
+</p></font><p><font color="blue">
+
+If one uses the binomial distribution directly (i.e., without using the normal
+approximation), then it is only necessary to loop 113 times rather than 134
+times.  This computation uses one-sided rather than two-sided confidence
+intervals, If one uses one-sided confidence intervals and the normal
+approximation, then one must only loop 106 times. The best answer is 113, but
+the other two are also acceptable.
+
+</font>
+
+</p><p>
+
+</p></li><li>When the gadget is not a widget, the test will be incorrect 1% of the time.
+<p>
+<font color="blue">
+This is not possible. The two distributions are the same, so one can never
+perform enough tests to distinguish them.
+</font>
+</p><p>
+
+</p></li></ol>
+
+<p>
+3. (20 points) An experiment is studying two factors, each of which has four
+possible values, for a total of 16 combinations of the two factors. The
+experimental design is a 4×4 grid where in each row and column each value
+of a factor occurs exactly once. For example, for just the first factor the
+grid might look like this:
+</p><p>
+<table cellpadding="5">
+<tbody><tr><td>A</td><td>B</td><td>C</td><td>D
+</td></tr><tr><td>B</td><td>C</td><td>D</td><td>A
+</td></tr><tr><td>C</td><td>D</td><td>A</td><td>B
+</td></tr><tr><td>D</td><td>A</td><td>B</td><td>C
+</td></tr></tbody></table>
+</p><p>
+where the four possible values of the first factor are A, B, C and D. An
+additional constraint is that all 16 combinations of the two factors must each
+occur exactly once in the grid. Develop a 3SAT expression that specifies the
+requirements of this experimental design. Some of the grid entries already have
+one or the other factor specified, and it is required to extend the design to
+the rest of the grid. Show how one can specify these grid entries in your 3SAT
+expression. It isn't necessary to write out the entire expression. It is enough
+to show how it can be constructed.
+</p><p>
+
+<font color="blue">
+
+One possible solution is to introduce boolean variables for each of the
+combinations and each of the grid locations. Additional variables must be
+introduced to convert the expression to 3SAT. So there are 16 * 16 = 256
+variables in all.  For example, one might name the variables Xrcuv, where r is
+a row (from 1 to 4), c is a column (from 1 to 4), u is a value of the first
+factor (1 to 4) and v is a value of the second factor (from 1 to 4).
+
+</font></p><ol><font color="blue">
+
+<li>Every grid location has exactly one value for each factor.
+
+<ol>
+<li>
+
+For every r, c, v, (Xrc1v or Xrc2v or Xrc3v or Xrc4v) and (-Xrc1v or -Xrc2v)
+and (-Xrc1v or -Xrc3v) and (-Xrc1v or -Xrc4v) and (-Xrc2v or -Xrc3v) and
+(-Xrc2v or -Xrc4v) and (-Xrc3v or -Xrc4v). The first clause must be converted
+to 3SAT.
+
+</li><li>
+
+for every r, c, u, (Xrcu1 or Xrcu2 or Xrcu3 or Xrcu4) and (-Xrcu1 or -Xrcu2)
+and (-Xrcu1 or -Xrcu3) and (-Xrcu1 or -Xrcu4) and (-Xrcu2 or -Xrcu3) and
+(-Xrcu2 or -Xrcu4) and (-Xrcu3 or -Xrcu4). The first clause must be converted
+to 3SAT.
+
+</li></ol>
+
+</li><li>Every row has each value of each factor exactly once:<p>for every r, u, v,
+ (Xr1uv or Xr2uv or Xr3uv or Xr4uv) and (-Xr1uv or -Xr2uv) and (-Xr1uv or
+ -Xr3uv) and (-Xr1uv or -Xr4uv) and (-Xr2uv or -Xr3uv) and (-Xr2uv or -Xr4uv)
+ and (-Xr3uv or -Xr4uv). The first clause must be converted to 3SAT.
+
+</p></li><li>Every column has each value of each factor exactly once:<p> for every c, u,
+v: (X1cuv or X2cuv or X3cuv or X4cuv) and (-X1cuv or -X2cuv) and (-X1cuv or
+-X3cuv) and (-X1cuv or -X4cuv) and (-X2cuv or -X3cuv) and (-X2cuv or -X4cuv)
+and (-X3cuv or -X4cuv). The first clause must be converted to 3SAT.
+
+</p></li><li>Every combination of values occurs exactly once. It is enough to specify
+that each combination occurs at least once. If this is true, then no
+combination can occur more than once since the number of combinations is the
+same as the number of grid locations: <p>for every u, v, (X11uv or X12uv or
+X13uv or X14uv or X21uv or X22uv or X23uv or X24uv or X31uv or X32uv or X33uv
+or X34uv or X41uv or X42uv or X43uv or X44uv). An additional 13 variables
+are needed to convert this clause to 3SAT.
+
+</p></li></font></ol><font color="blue">
+</font><p><font color="blue">
+
+To specify part of an experimental design, add unit clauses. For each grid
+point in row r and column c that is required to have value u for the first factor
+and value v for the second factor, add the unit clause (Xrcuv).
+
+</font>
+</p><p>
+
+4. (30 points) Show the DPLL algorithm on the following SAT expressions:
+</p><p>
+</p><ol type="a">
+<li>
+<pre>S-U-V and VXZ and S-X-Z and V-W-Z and WX-Z and -V-W-Y and -UW-X and 
+XY-Z and -S-WZ and -U-W-X and U-XY and -SUV and -S-VZ and U-V-Y
+</pre>
+<p>
+<font color="blue">
+</font></p><pre><font color="blue">DPLL on Exp() = S-U-V and VXZ and S-X-Z and V-W-Z and WX-Z and -V-W-Y and -UW-X and XY-Z and -S-WZ and -U-W-X and U-XY and -SUV and -S-VZ and U-V-Y
+begin 0
+Trying S=T
+DPLL on Exp(S=T) = VXZ and V-W-Z and WX-Z and -V-W-Y and -UW-X and XY-Z and -WZ and -U-W-X and U-XY and UV and -VZ and U-V-Y
+begin 1
+Trying U=T
+DPLL on Exp(S=T, U=T) = VXZ and V-W-Z and WX-Z and -V-W-Y and W-X and XY-Z and -WZ and -W-X and -VZ
+begin 2
+Trying V=T
+DPLL on Exp(S=T, U=T, V=T) = WX-Z and -W-Y and W-X and XY-Z and -WZ and -W-X and Z
+begin 3
+Using unit clause to set Z=T
+DPLL on Exp(S=T, U=T, V=T, Z=T) = WX and -W-Y and W-X and XY and -W-X
+begin 4
+Trying W=T
+DPLL on Exp(S=T, U=T, V=T, W=T, Z=T) = -Y and XY and -X
+begin 5
+Using unit clause to set Y=F
+DPLL on Exp(S=T, U=T, V=T, W=T, Y=F, Z=T) = X and -X
+begin 6
+Using unit clause to set X=T
+not satisfied
+end 6
+not satisfied
+end 5
+Trying W=F
+DPLL on Exp(S=T, U=T, V=T, W=F, Z=T) = X and -X and XY
+begin 5
+Using unit clause to set X=T
+not satisfied
+end 5
+not satisfied
+end 4
+not satisfied
+end 3
+Trying V=F
+DPLL on Exp(S=T, U=T, V=F) = XZ and -W-Z and WX-Z and W-X and XY-Z and -WZ and -W-X
+begin 3
+Trying W=T
+DPLL on Exp(S=T, U=T, V=F, W=T) = XZ and -Z and XY-Z and Z and -X
+begin 4
+Using unit clause to set Z=F
+not satisfied
+end 4
+Trying W=F
+DPLL on Exp(S=T, U=T, V=F, W=F) = XZ and X-Z and -X and XY-Z
+begin 4
+Using unit clause to set X=F
+DPLL on Exp(S=T, U=T, V=F, W=F, X=F) = Z and -Z and Y-Z
+begin 5
+Using unit clause to set Z=T
+not satisfied
+end 5
+not satisfied
+end 4
+not satisfied
+end 3
+not satisfied
+end 2
+Trying U=F
+DPLL on Exp(S=T, U=F) = VXZ and V-W-Z and WX-Z and -V-W-Y and XY-Z and -WZ and -XY and V and -VZ and -V-Y
+begin 2
+Using unit clause to set V=T
+DPLL on Exp(S=T, U=F, V=T) = WX-Z and -W-Y and XY-Z and -WZ and -XY and Z and -Y
+begin 3
+Using unit clause to set Z=T
+DPLL on Exp(S=T, U=F, V=T, Z=T) = WX and -W-Y and XY and -XY and -Y
+begin 4
+Using unit clause to set Y=F
+DPLL on Exp(S=T, U=F, V=T, Y=F, Z=T) = WX and X and -X
+begin 5
+Using unit clause to set X=T
+not satisfied
+end 5
+not satisfied
+end 4
+not satisfied
+end 3
+not satisfied
+end 2
+not satisfied
+end 1
+Trying S=F
+DPLL on Exp(S=F) = -U-V and VXZ and -X-Z and V-W-Z and WX-Z and -V-W-Y and -UW-X and XY-Z and -U-W-X and U-XY and U-V-Y
+begin 1
+Trying U=T
+DPLL on Exp(S=F, U=T) = -V and VXZ and -X-Z and V-W-Z and WX-Z and -V-W-Y and W-X and XY-Z and -W-X
+begin 2
+Using unit clause to set V=F
+DPLL on Exp(S=F, U=T, V=F) = XZ and -X-Z and -W-Z and WX-Z and W-X and XY-Z and -W-X
+begin 3
+Trying W=T
+DPLL on Exp(S=F, U=T, V=F, W=T) = XZ and -X-Z and -Z and XY-Z and -X
+begin 4
+Using unit clause to set Z=F
+DPLL on Exp(S=F, U=T, V=F, W=T, Z=F) = X and -X
+begin 5
+Using unit clause to set X=T
+not satisfied
+end 5
+not satisfied
+end 4
+Trying W=F
+DPLL on Exp(S=F, U=T, V=F, W=F) = XZ and -X-Z and X-Z and -X and XY-Z
+begin 4
+Using unit clause to set X=F
+DPLL on Exp(S=F, U=T, V=F, W=F, X=F) = Z and -Z and Y-Z
+begin 5
+Using unit clause to set Z=T
+not satisfied
+end 5
+not satisfied
+end 4
+not satisfied
+end 3
+not satisfied
+end 2
+Trying U=F
+DPLL on Exp(S=F, U=F) = VXZ and -X-Z and V-W-Z and WX-Z and -V-W-Y and XY-Z and -XY and -V-Y
+begin 2
+Trying V=T
+DPLL on Exp(S=F, U=F, V=T) = -X-Z and WX-Z and -W-Y and XY-Z and -XY and -Y
+begin 3
+Using unit clause to set Y=F
+DPLL on Exp(S=F, U=F, V=T, Y=F) = -X-Z and WX-Z and X-Z and -X
+begin 4
+Using unit clause to set X=F
+DPLL on Exp(S=F, U=F, V=T, X=F, Y=F) = W-Z and -Z
+begin 5
+Using unit clause to set Z=F
+DPLL on Exp(S=F, U=F, V=T, X=F, Y=F, Z=F) = 
+begin 6
+satisfied
+end 6
+satisfied
+end 5
+satisfied
+end 4
+satisfied
+end 3
+satisfied
+end 2
+satisfied
+end 1
+satisfied
+end 0
+</font></pre><font color="blue">
+</font>
+</li><li>
+<pre>SXY and -VXZ and -SYZ and -UV-W and -UWX and -V-WZ and U-Y-Z and
+-XY-Z and VW-Z and -V-XY and SVZ and -S-U-Y and -V-W-X and -VXY
+</pre>
+<p>
+<font color="blue">
+</font></p><pre><font color="blue">DPLL on Exp() = SXY and -VXZ and -SYZ and -UV-W and -UWX and -V-WZ and U-Y-Z and -XY-Z and VW-Z and -V-XY and SVZ and -S-U-Y and -V-W-X and -VXY
+begin 0
+Trying S=T
+DPLL on Exp(S=T) = -VXZ and YZ and -UV-W and -UWX and -V-WZ and U-Y-Z and -XY-Z and VW-Z and -V-XY and -U-Y and -V-W-X and -VXY
+begin 1
+Trying U=T
+DPLL on Exp(S=T, U=T) = -VXZ and YZ and V-W and WX and -V-WZ and -XY-Z and VW-Z and -V-XY and -Y and -V-W-X and -VXY
+begin 2
+Using unit clause to set Y=F
+DPLL on Exp(S=T, U=T, Y=F) = -VXZ and Z and V-W and WX and -V-WZ and -X-Z and VW-Z and -V-X and -V-W-X and -VX
+begin 3
+Using unit clause to set Z=T
+DPLL on Exp(S=T, U=T, Y=F, Z=T) = V-W and WX and -X and VW and -V-X and -V-W-X and -VX
+begin 4
+Using unit clause to set X=F
+DPLL on Exp(S=T, U=T, X=F, Y=F, Z=T) = V-W and W and VW and -V
+begin 5
+Using unit clause to set W=T
+DPLL on Exp(S=T, U=T, W=T, X=F, Y=F, Z=T) = V and -V
+begin 6
+Using unit clause to set V=T
+not satisfied
+end 6
+not satisfied
+end 5
+not satisfied
+end 4
+not satisfied
+end 3
+not satisfied
+end 2
+Trying U=F
+DPLL on Exp(S=T, U=F) = -VXZ and YZ and -V-WZ and -Y-Z and -XY-Z and VW-Z and -V-XY and -V-W-X and -VXY
+begin 2
+Trying V=T
+DPLL on Exp(S=T, U=F, V=T) = XZ and YZ and -WZ and -Y-Z and -XY-Z and -XY and -W-X and XY
+begin 3
+Trying W=T
+DPLL on Exp(S=T, U=F, V=T, W=T) = XZ and YZ and Z and -Y-Z and -XY-Z and -XY and -X and XY
+begin 4
+Using unit clause to set Z=T
+DPLL on Exp(S=T, U=F, V=T, W=T, Z=T) = -Y and -XY and -XY and -X and XY
+begin 5
+Using unit clause to set Y=F
+DPLL on Exp(S=T, U=F, V=T, W=T, Y=F, Z=T) = -X and -X and -X and X
+begin 6
+Using unit clause to set X=F
+not satisfied
+end 6
+not satisfied
+end 5
+not satisfied
+end 4
+Trying W=F
+DPLL on Exp(S=T, U=F, V=T, W=F) = XZ and YZ and -Y-Z and -XY-Z and -XY and XY
+begin 4
+Trying X=T
+DPLL on Exp(S=T, U=F, V=T, W=F, X=T) = YZ and -Y-Z and Y-Z and Y
+begin 5
+Using unit clause to set Y=T
+DPLL on Exp(S=T, U=F, V=T, W=F, X=T, Y=T) = -Z
+begin 6
+Using unit clause to set Z=F
+DPLL on Exp(S=T, U=F, V=T, W=F, X=T, Y=T, Z=F) = true
+begin 7
+satisfied
+end 7
+satisfied
+end 6
+satisfied
+end 5
+satisfied
+end 4
+satisfied
+end 3
+satisfied
+end 2
+satisfied
+end 1
+satisfied
+end 0
+</font></pre><font color="blue">
+</font>
+</li></ol>
+<p>
+When there is a choice of which variable to use, the variable that is
+lexicographically first should be used, and branch by setting a variable first
+to true and then to false.  Show recursive
+calls to DPLL using begin and end with the depth of recursion (starting at 0).
+Apply only unit propagation, and only once per recursive call to DPLL.
+</p><p>
+
+5. (15 points) A University has 15 nonoverlapping time slots for courses, 9
+slots on a MWF schedule, and 6 slots on a TTh schedule. Student enroll in
+courses before the slots and rooms are allocated for the courses. The courses
+must be given slots so that no pair of courses with a common student are
+scheduled for the same slot. There is no limit on the number of rooms.  Propose
+a way to determine whether the slots can be allocated, and if they can, then
+find an allocation. Determine the complexity class of this problem, and prove
+it.
+</p><p>
+<font color="blue">
+
+Express this as an instance of the 15-color problem. The undirected graph has
+one node for each course. There is an undirected edge joining two nodes if
+there is a student who has enrolled in the courses represented by the two
+nodes. A time slot is one color. The courses can be allocated to the slots if
+and only if the graph can be colored with the 15 colors so that no two nodes
+joined by an edge have the same color. The decision problem tells one whether
+the courses can be allocated time slots. A coloring is an allocation. This
+problem is therefore NP-complete because the 15-color problem is NP-complete.
+
+</font>
+</p><p>
+
+
+
+
+</p></body></html>

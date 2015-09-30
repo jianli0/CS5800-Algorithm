@@ -55,6 +55,7 @@ class PriorityQueue:
 
     def pop(self):
         [_, item] = heapq.heappop(self.heap)
+        # FIXME
         #  (_, item) = heapq.heappop(self.heap)
         return item
 

@@ -1,0 +1,369 @@
+
+<!-- saved from url=(0183)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/hu940msthgm4z8/ans4.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662326&Signature=%2B735%2BjazJhMM%2B4KQcNGSnHmXkjw%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Solution to Assignment #4</h1></center>
+<p>
+
+1. (25 points) For the following directed graph compute the shortest paths from
+vertex 6 using the Leyzorek algorithm and a binary heap:
+</p><p>
+<table cellpadding="5" border="0">
+<tbody><tr><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length
+</th></tr><tr><td>(1,2)</td><td>1.0</td><td>(3,1)</td><td>2.2</td><td>(3,2)</td><td>4.7</td><td>(5,1)</td><td>9.9
+</td></tr><tr><td>(5,2)</td><td>1.3</td><td>(5,3)</td><td>2.6</td><td>(5,4)</td><td>4.1</td><td>(5,8)</td><td>1.1
+</td></tr><tr><td>(6,3)</td><td>2.7</td><td>(6,5)</td><td>4.3</td><td>(6,7)</td><td>5.2</td><td>(6,8)</td><td>3.8
+</td></tr><tr><td>(7,1)</td><td>8.4</td><td>(7,2)</td><td>1.7</td><td>(7,4)</td><td>1.3</td><td>(7,5)</td><td>3.5
+</td></tr><tr><td>(7,8)</td><td>4.3</td><td>(8,2)</td><td>4.7</td><td>(8,3)</td><td>3.9</td><td>(8,4)</td><td>2.4
+</td></tr></tbody></table>
+</p><p>
+For each step show the distance that was computed and the binary heap.
+Note that the initial vertex is 6, not 1.
+</p><p>
+<font color="blue">
+</font></p><pre><font color="blue">6(0) 2(infinity) 1(infinity) 4(infinity) 5(infinity) 3(infinity) 7(infinity) 8(infinity)
+Remove 6(0)
+8(infinity) 2(infinity) 1(infinity) 4(infinity) 5(infinity) 3(infinity) 7(infinity)
+2 comparisons
+Edge (6,3) weight 2.7
+3.previous = 6
+3(2.7) 2(infinity) 8(infinity) 4(infinity) 5(infinity) 1(infinity) 7(infinity)
+2 comparisons
+Edge (6,5) weight 4.3
+5.previous = 6
+3(2.7) 5(4.3) 8(infinity) 4(infinity) 2(infinity) 1(infinity) 7(infinity)
+2 comparisons
+Edge (6,7) weight 5.2
+7.previous = 6
+3(2.7) 5(4.3) 7(5.2) 4(infinity) 2(infinity) 1(infinity) 8(infinity)
+2 comparisons
+Edge (6,8) weight 3.8
+8.previous = 6
+3(2.7) 5(4.3) 8(3.8) 4(infinity) 2(infinity) 1(infinity) 7(5.2)
+2 comparisons
+Remove 3(2.7)
+8(3.8) 5(4.3) 7(5.2) 4(infinity) 2(infinity) 1(infinity)
+3 comparisons
+Edge (3,1) weight 2.2
+1.previous = 3
+8(3.8) 5(4.3) 1(4.9) 4(infinity) 2(infinity) 7(5.2)
+2 comparisons
+Edge (3,2) weight 4.7
+2.previous = 3
+8(3.8) 5(4.3) 1(4.9) 4(infinity) 2(7.4) 7(5.2)
+1 comparison
+Remove 8(3.8)
+5(4.3) 7(5.2) 1(4.9) 4(infinity) 2(7.4) 
+4 comparisons
+Edge (8,2) weight 4.7
+No change
+Edge (8,3) weight 3.9
+Vertex 3 has been removed from the queue
+Edge (8,4) weight 2.4
+4.previous = 8
+5(4.3) 7(5.2) 1(4.9) 4(6.2) 2(7.4) 
+1 comparison
+Remove 5(4.3)
+1(4.9) 7(5.2) 2(7.4) 4(6.2) 
+2 comparisons
+Edge (5,1) weight 9.9
+No change
+Edge (5,2) weight 1.3
+2.previous = 5
+1(4.9) 7(5.2) 2(5.6) 4(6.2) 
+1 comparison
+Edge (5,3) weight 2.6
+Vertex 3 has been removed from the queue
+Edge (5,4) weight 4.1
+No change
+Edge (5,8) weight 1.1
+Vertex 8 has been removed from the queue
+Remove 1(4.9)
+7(5.2) 4(6.2) 2(5.6)
+2 comparisons
+Edge (1,2) weight 1.0
+No change
+Remove 7(5.2)
+2(5.6) 4(6.2)
+1 comparison
+Edge (7,1) weight 8.4
+Vertex 1 has been removed from the queue
+Edge (7,2) weight 1.7
+No change
+Edge (7,4) weight 1.3
+No change
+Edge (7,5) weight 3.5
+Vertex 5 has been removed from the queue
+Edge (7,8) weight 4.3
+Vertex 8 has been removed from the queue
+Remove 2(5.6)
+4(6.2)
+no comparisons
+Remove 4(6.2)
+</font></pre><font color="blue">
+</font>
+<p>
+Number of comparisons (not counting the initialization) is 27
+</p><ul>
+<li>shortest path to 1 { 6, 3, 1 }
+</li><li>shortest path to 2 { 6, 5, 2 }
+</li><li>shortest path to 3 { 6, 3 }
+</li><li>shortest path to 4 { 6, 8, 4 }
+</li><li>shortest path to 5 { 6, 5 }
+</li><li>shortest path to 7 { 6, 7 }
+</li><li>shortest path to 8 { 6, 8 }
+</li></ul>
+<p>
+2. (25 points) Using the same graph as in Q1 above, compute the shortest paths
+from vertex 6 using the Leyzorek algorithm and a ternary heap.  Compute the
+number of comparisons that are performed for the binary and ternary heaps.
+</p><p>
+<font color="blue">
+</font></p><pre><font color="blue">6(0) 1(infinity) 3(infinity) 4(infinity) 5(infinity) 2(infinity) 7(infinity) 8(infinity)
+Remove 6(0)
+8(infinity) 1(infinity) 3(infinity) 4(infinity) 5(infinity) 2(infinity) 7(infinity)
+3 comparisons
+Edge (6,3) weight 2.7
+3.previous = 6
+3(2.7) 1(infinity) 8(infinity) 4(infinity) 5(infinity) 2(infinity) 7(infinity)
+1 comparison
+Edge (6,5) weight 4.3
+5.previous = 6
+3(2.7) 5(4.3) 8(infinity) 4(infinity) 1(infinity) 2(infinity) 7(infinity)
+2 comparisons
+Edge (6,7) weight 5.2
+7.previous = 6
+3(2.7) 5(4.3) 8(infinity) 4(infinity) 1(infinity) 2(infinity) 7(5.2)
+1 comparison
+Edge (6,8) weight 3.8
+8.previous = 6
+3(2.7) 5(4.3) 8(3.8) 4(infinity) 1(infinity) 2(infinity) 7(5.2)
+1 comparison
+Remove 3(2.7)
+8(3.8) 5(4.3) 7(5.2) 4(infinity) 1(infinity) 2(infinity)
+3 comparisons
+Edge (3,1) weight 2.2
+1.previous = 3
+8(3.8) 5(4.3) 7(5.2) 4(infinity) 1(4.9) 2(infinity)
+1 comparison
+Edge (3,2) weight 4.7
+2.previous = 3
+8(3.8) 5(4.3) 7(5.2) 4(infinity) 1(4.9) 2(7.4)
+1 comparison
+Remove 8(3.8)
+5(4.3) 1(4.9) 7(5.2) 4(infinity) 2(7.4) 
+4 comparisons
+Edge (8,2) weight 4.7
+No change
+Edge (8,3) weight 3.9
+Vertex 3 has been removed from the queue
+Edge (8,4) weight 2.4
+4.previous = 8
+5(4.3) 1(4.9) 7(5.2) 4(6.2) 2(7.4) 
+1 comparison
+Remove 5(4.3)
+1(4.9) 2(7.4) 7(5.2) 4(6.2) 
+3 comparisons
+Edge (5,1) weight 9.9
+No change
+Edge (5,2) weight 1.3
+2.previous = 5
+1(4.9) 2(5.6) 7(5.2) 4(6.2) 
+1 comparison
+Edge (5,3) weight 2.6
+Vertex 3 has been removed from the queue
+Edge (5,4) weight 4.1
+No change
+Edge (5,8) weight 1.1
+Vertex 8 has been removed from the queue
+Remove 1(4.9)
+7(5.2) 2(5.6) 4(6.2)
+2 comparisons
+Edge (1,2) weight 1.0
+No change
+Remove 7(5.2)
+2(5.6) 4(6.2)
+1 comparison
+Edge (7,1) weight 8.4
+Vertex 1 has been removed from the queue
+Edge (7,2) weight 1.7
+No change
+Edge (7,4) weight 1.3
+No change
+Edge (7,5) weight 3.5
+Vertex 5 has been removed from the queue
+Edge (7,8) weight 4.3
+Vertex 8 has been removed from the queue
+Remove 2(5.6)
+4(6.2)
+no comparisons
+Remove 4(6.2)
+</font></pre><font color="blue">
+<p>
+Number of comparisons (not counting the initialization) is 25
+</p><p>
+</p><ul>
+<li>shortest path to 1 { 6, 3, 1 }
+</li><li>shortest path to 2 { 6, 5, 2 }
+</li><li>shortest path to 3 { 6, 3 }
+</li><li>shortest path to 4 { 6, 8, 4 }
+</li><li>shortest path to 5 { 6, 5 }
+</li><li>shortest path to 7 { 6, 7 }
+</li><li>shortest path to 8 { 6, 8 }
+</li></ul>
+</font>
+<p>
+3. (25 points) For the following directed graph compute the shortest paths from
+vertex 3 using the Moore algorithm:
+</p><p>
+<table cellpadding="5" border="0">
+<tbody><tr><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length
+</th></tr><tr><td>(1,2)</td><td>-2</td><td>(1,5)</td><td>-2</td><td>(1,6)</td><td>-3</td><td>(1,8)</td><td>-1
+</td></tr><tr><td>(2,6)</td><td>7</td><td>(2,8)</td><td>4</td><td>(3,2)</td><td>2</td><td>(3,4)</td><td>5
+</td></tr><tr><td>(3,7)</td><td>9</td><td>(4,7)</td><td>4</td><td>(5,7)</td><td>5</td><td>(7,8)</td><td>-1
+</td></tr><tr><td>(8,2)</td><td>2</td><td>(8,5)</td><td>8</td><td>(8,6)</td><td>3</td><td>(8,7)</td><td>7
+</td></tr></tbody></table>
+</p><p>
+Show your answer using the table notation I showed in class. Each column is the result of one edge.
+Each table is one iteration.
+</p><p>
+<font color="blue">
+In the following the parent pointer is in brackets. The initial column is not part of the table and is for reference only.
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><th>node</th><th>initial</th><th>(1,2)</th><th>(1,5)</th><th>(1,6)</th><th>(1,8)</th><th>(2,6)</th><th>(2,8)</th><th>(3,2)</th><th>(3,4)</th><th>(3,7)</th><th>(4,7)</th><th>(5,7)</th><th>(7,8)</th><th>(8,2)</th><th>(8,5)</th><th>(8,6)</th><th>(8,7)
+</th></tr><tr><td>1</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;
+</td></tr><tr><td>2</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]
+</td></tr><tr><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>4</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]
+</td></tr><tr><td>5</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]
+</td></tr><tr><td>6</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>11 [8]</td><td>11 [8]
+</td></tr><tr><td>7</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]
+</td></tr><tr><td>8</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>8 [7]</td><td>8 [7]</td><td>8 [7]</td><td>8 [7]</td><td>8 [7]
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><th>node</th><th>initial</th><th>(1,2)</th><th>(1,5)</th><th>(1,6)</th><th>(1,8)</th><th>(2,6)</th><th>(2,8)</th><th>(3,2)</th><th>(3,4)</th><th>(3,7)</th><th>(4,7)</th><th>(5,7)</th><th>(7,8)</th><th>(8,2)</th><th>(8,5)</th><th>(8,6)</th><th>(8,7)
+</th></tr><tr><td>1</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;</td><td>&#8734;
+</td></tr><tr><td>2</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]</td><td>2 [3]
+</td></tr><tr><td>3</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>4</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]</td><td>5 [3]
+</td></tr><tr><td>5</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>16 [8]</td><td>14 [8]</td><td>14 [8]</td><td>14 [8]
+</td></tr><tr><td>6</td><td>11 [8]</td><td>11 [8]</td><td>11 [8]</td><td>11 [8]</td><td>11 [8]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]</td><td>9 [2]
+</td></tr><tr><td>7</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]</td><td>9 [3]
+</td></tr><tr><td>8</td><td>8 [7]</td><td>8 [7]</td><td>8 [7]</td><td>8 [7]</td><td>8 [7]</td><td>8 [7]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]</td><td>6 [2]
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+The next table has no changes.
+</font></p><p><font color="blue">
+Final column: &#8734; 2 0 5 14 9 9 6
+</font></p><p><font color="blue">
+</font></p><ul><font color="blue">
+<li>shortest path from 3 to 2: { 3, 2 }
+</li><li>shortest path from 3 to 4: { 3, 4 }
+</li><li>shortest path from 3 to 5: { 3, 2, 8, 5 }
+</li><li>shortest path from 3 to 6: { 3, 2, 6 }
+</li><li>shortest path from 3 to 7: { 3, 7 }
+</li><li>shortest path from 3 to 8: { 3, 2, 8 }
+</li></font></ul><font color="blue">
+</font>
+<p>
+
+4. (25 points) Topologically sort the following DAG:
+</p><p>
+<table cellpadding="5" border="0">
+<tbody><tr><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length</th><th>Edge</th><th>Length
+</th></tr><tr><td>(1,3)</td><td>2.4</td><td>(1,6)</td><td>-0.3</td><td>(1,7)</td><td>-6.9</td><td>(1,10)</td><td>7.7
+</td></tr><tr><td>(2,5)</td><td>1.5</td><td>(2,6)</td><td>-6.0</td><td>(3,4)</td><td>8.3</td><td>(3,8)</td><td>7.1
+</td></tr><tr><td>(3,9)</td><td>-3.8</td><td>(4,2)</td><td>-7.0</td><td>(4,6)</td><td>-5.1</td><td>(4,9)</td><td>-4.7
+</td></tr><tr><td>(5,9)</td><td>-9.8</td><td>(8,5)</td><td>5.0</td><td>(8,7)</td><td>8.2</td><td>(8,9)</td><td>-3.1
+</td></tr><tr><td>(9,7)</td><td>1.4</td><td>(10,2)</td><td>6.1</td><td>(10,4)</td><td>-8.5</td><td>(10,9)</td><td>5.2
+</td></tr></tbody></table>
+</p><p>
+Compute the shortest paths to all other vertexes, starting at the first vertex
+in topological sorted order.  Show each step in the DAG single-source shortest
+path algorithm.  For each step show the distance and parent pointer that was
+computed.
+</p><p>
+<font color="blue">
+</font></p><pre><font color="blue">Topological sort: 1 10 3 8 4 2 6 5 9 7
+</font></pre><font color="blue">
+<p>
+</p><pre>Initial column 0 infinity infinity infinity infinity infinity infinity infinity infinity infinity
+(1,10) weight 7.7
+10.dist = 7.7
+10.parent = 1
+(1,3) weight 2.4
+3.dist = 2.4
+3.parent = 1
+(1,6) weight -0.3
+6.dist = -0.3
+6.parent = 1
+(1,7) weight -6.9
+7.dist = -6.9
+7.parent = 1
+(10,4) weight -8.5
+4.dist = -0.8
+4.parent = 10
+(10,2) weight 6.1
+2.dist = 13.8
+2.parent = 10
+(10,9) weight 5.2
+9.dist = 12.9
+9.parent = 10
+(3,8) weight 7.1
+8.dist = 9.5
+8.parent = 3
+(3,4) weight 8.3
+No change
+(3,9) weight -3.8
+9.dist = -1.4
+9.parent = 3
+(8,5) weight 5
+5.dist = 14.5
+5.parent = 8
+(8,9) weight -3.1
+No change
+(8,7) weight 8.2
+No change
+(4,2) weight -7
+2.dist = -7.8
+2.parent = 4
+(4,6) weight -5.1
+6.dist = -5.9
+6.parent = 4
+(4,9) weight -4.7
+9.dist = -5.5
+9.parent = 4
+(2,6) weight -6
+6.dist = -13.8
+6.parent = 2
+(2,5) weight 1.5
+5.dist = -6.3
+5.parent = 2
+(5,9) weight -9.8
+9.dist = -16.1
+9.parent = 5
+(9,7) weight 1.4
+7.dist = -14.7
+7.parent = 9
+Final column: 0 7.7 2.4 9.5 -0.8 -7.8 -13.8 -6.3 -16.1 -14.7
+</pre>
+<p>
+</p><ul>
+<li>shortest path from 1 to 2: { 1, 10, 4, 2 }
+</li><li>shortest path from 1 to 3: { 1, 3 }
+</li><li>shortest path from 1 to 4: { 1, 10, 4 }
+</li><li>shortest path from 1 to 5: { 1, 10, 4, 2, 5 }
+</li><li>shortest path from 1 to 6: { 1, 10, 4, 2, 6 }
+</li><li>shortest path from 1 to 7: { 1, 10, 4, 2, 5, 9, 7 }
+</li><li>shortest path from 1 to 8: { 1, 3, 8 }
+</li><li>shortest path from 1 to 9: { 1, 10, 4, 2, 5, 9 }
+</li><li>shortest path from 1 to 10: { 1, 10 }
+</li></ul>
+</font>
+
+
+</body></html>

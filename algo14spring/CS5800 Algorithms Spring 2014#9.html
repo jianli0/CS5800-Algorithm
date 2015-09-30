@@ -1,0 +1,265 @@
+
+<!-- saved from url=(0177)https://s3.amazonaws.com/piazza-resources/hq6zhmpv89t5lx/htk15o3k6a113m/ans9.html?AWSAccessKeyId=AKIAJKOQYKAYOBKKVTKQ&Expires=1415662337&Signature=gKqUI7mS6IX9cSQqTTbD3MUI7wM%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CS5800 Algorithms Spring 2014</title>
+<style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://ibogfemlnclpecapkojhmanpiebldbnk/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></head>
+<body>
+<center><h1>CS5800 Algorithms Spring 2014 Solution to Assignment #9</h1></center>
+<p>
+1. (25 points) A message has been encrypted using a substitution cypher. Only the letters and the space (27 in all) were used
+in the message and the encrypted message. You must perform two of the steps in the process of decrypting the message.
+The encrypted message is: ofduwbrxbxvfbofduwwuwdbxvfbsuwdbjruhbdlrifetbrwhbdpbpwbxueebtpgbypqfbxpbxvfbfwhbxvfwbjxpcb
+</p><p>
+The bigram frequencies are:
+</p><p>
+<table cellpadding="1" border="1">
+<tbody><tr><td></td><td>space</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z
+</td></tr><tr><td>space</td><td>0</td><td>3396</td><td>1017</td><td>911</td><td>862</td><td>391</td><td>751</td><td>577</td><td>1590</td><td>1983</td><td>122</td><td>263</td><td>806</td><td>959</td><td>584</td><td>1459</td><td>510</td><td>186</td><td>534</td><td>2735</td><td>4678</td><td>266</td><td>283</td><td>1873</td><td>2</td><td>552</td><td>2
+</td></tr><tr><td>a</td><td>696</td><td>0</td><td>214</td><td>157</td><td>441</td><td>0</td><td>63</td><td>160</td><td>25</td><td>715</td><td>12</td><td>125</td><td>927</td><td>183</td><td>1602</td><td>3</td><td>108</td><td>0</td><td>703</td><td>899</td><td>1162</td><td>76</td><td>168</td><td>75</td><td>4</td><td>257</td><td>5
+</td></tr><tr><td>b</td><td>5</td><td>80</td><td>66</td><td>0</td><td>1</td><td>523</td><td>0</td><td>0</td><td>0</td><td>110</td><td>7</td><td>0</td><td>105</td><td>1</td><td>0</td><td>203</td><td>0</td><td>0</td><td>59</td><td>28</td><td>8</td><td>203</td><td>0</td><td>0</td><td>0</td><td>75</td><td>0
+</td></tr><tr><td>c</td><td>9</td><td>309</td><td>0</td><td>16</td><td>0</td><td>701</td><td>0</td><td>0</td><td>449</td><td>30</td><td>0</td><td>176</td><td>66</td><td>0</td><td>0</td><td>341</td><td>0</td><td>0</td><td>108</td><td>1</td><td>74</td><td>103</td><td>0</td><td>0</td><td>0</td><td>8</td><td>0
+</td></tr><tr><td>d</td><td>3237</td><td>70</td><td>1</td><td>0</td><td>62</td><td>440</td><td>10</td><td>31</td><td>1</td><td>227</td><td>1</td><td>0</td><td>61</td><td>0</td><td>52</td><td>432</td><td>0</td><td>0</td><td>87</td><td>85</td><td>0</td><td>60</td><td>17</td><td>3</td><td>0</td><td>45</td><td>0
+</td></tr><tr><td>e</td><td>5840</td><td>761</td><td>12</td><td>128</td><td>932</td><td>481</td><td>72</td><td>122</td><td>32</td><td>94</td><td>0</td><td>14</td><td>436</td><td>253</td><td>932</td><td>28</td><td>140</td><td>0</td><td>1817</td><td>570</td><td>318</td><td>1</td><td>191</td><td>44</td><td>104</td><td>213</td><td>14
+</td></tr><tr><td>f</td><td>842</td><td>108</td><td>0</td><td>0</td><td>0</td><td>149</td><td>120</td><td>0</td><td>0</td><td>166</td><td>0</td><td>0</td><td>34</td><td>0</td><td>0</td><td>320</td><td>0</td><td>0</td><td>85</td><td>0</td><td>74</td><td>96</td><td>0</td><td>0</td><td>0</td><td>4</td><td>0
+</td></tr><tr><td>g</td><td>1033</td><td>217</td><td>0</td><td>0</td><td>0</td><td>285</td><td>0</td><td>17</td><td>311</td><td>81</td><td>0</td><td>0</td><td>60</td><td>0</td><td>12</td><td>198</td><td>1</td><td>0</td><td>204</td><td>61</td><td>2</td><td>44</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1
+</td></tr><tr><td>h</td><td>667</td><td>1146</td><td>4</td><td>0</td><td>1</td><td>3777</td><td>1</td><td>0</td><td>0</td><td>779</td><td>1</td><td>0</td><td>4</td><td>5</td><td>3</td><td>569</td><td>0</td><td>0</td><td>82</td><td>4</td><td>225</td><td>56</td><td>0</td><td>0</td><td>0</td><td>44</td><td>0
+</td></tr><tr><td>i</td><td>548</td><td>32</td><td>14</td><td>596</td><td>687</td><td>190</td><td>160</td><td>209</td><td>0</td><td>6</td><td>0</td><td>97</td><td>310</td><td>221</td><td>2023</td><td>172</td><td>17</td><td>0</td><td>214</td><td>577</td><td>1325</td><td>2</td><td>59</td><td>0</td><td>8</td><td>0</td><td>26
+</td></tr><tr><td>j</td><td>0</td><td>6</td><td>0</td><td>1</td><td>0</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>17</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>102</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>k</td><td>386</td><td>8</td><td>0</td><td>0</td><td>0</td><td>364</td><td>0</td><td>0</td><td>0</td><td>210</td><td>0</td><td>0</td><td>22</td><td>0</td><td>138</td><td>0</td><td>0</td><td>0</td><td>1</td><td>18</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>9</td><td>0
+</td></tr><tr><td>l</td><td>678</td><td>307</td><td>4</td><td>1</td><td>334</td><td>729</td><td>145</td><td>1</td><td>0</td><td>852</td><td>0</td><td>59</td><td>678</td><td>8</td><td>0</td><td>322</td><td>12</td><td>0</td><td>4</td><td>43</td><td>48</td><td>14</td><td>12</td><td>15</td><td>0</td><td>436</td><td>0
+</td></tr><tr><td>m</td><td>338</td><td>306</td><td>61</td><td>0</td><td>0</td><td>579</td><td>10</td><td>0</td><td>0</td><td>170</td><td>0</td><td>0</td><td>1</td><td>15</td><td>15</td><td>314</td><td>74</td><td>0</td><td>0</td><td>25</td><td>0</td><td>124</td><td>0</td><td>0</td><td>0</td><td>68</td><td>0
+</td></tr><tr><td>n</td><td>2029</td><td>89</td><td>0</td><td>174</td><td>1266</td><td>554</td><td>19</td><td>1138</td><td>2</td><td>159</td><td>3</td><td>109</td><td>87</td><td>0</td><td>50</td><td>541</td><td>2</td><td>6</td><td>2</td><td>130</td><td>456</td><td>54</td><td>19</td><td>5</td><td>17</td><td>87</td><td>0
+</td></tr><tr><td>o</td><td>1332</td><td>17</td><td>38</td><td>95</td><td>98</td><td>46</td><td>618</td><td>37</td><td>45</td><td>121</td><td>0</td><td>208</td><td>165</td><td>284</td><td>1051</td><td>444</td><td>103</td><td>11</td><td>673</td><td>122</td><td>421</td><td>1554</td><td>86</td><td>538</td><td>11</td><td>11</td><td>2
+</td></tr><tr><td>p</td><td>211</td><td>115</td><td>2</td><td>0</td><td>0</td><td>285</td><td>0</td><td>0</td><td>61</td><td>128</td><td>0</td><td>0</td><td>175</td><td>0</td><td>0</td><td>175</td><td>114</td><td>0</td><td>87</td><td>31</td><td>54</td><td>68</td><td>0</td><td>0</td><td>0</td><td>15</td><td>0
+</td></tr><tr><td>q</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>208</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>r</td><td>1527</td><td>267</td><td>1</td><td>54</td><td>177</td><td>1145</td><td>8</td><td>63</td><td>19</td><td>355</td><td>0</td><td>59</td><td>45</td><td>75</td><td>85</td><td>346</td><td>69</td><td>0</td><td>86</td><td>340</td><td>242</td><td>80</td><td>7</td><td>8</td><td>0</td><td>369</td><td>0
+</td></tr><tr><td>s</td><td>2239</td><td>652</td><td>0</td><td>31</td><td>0</td><td>785</td><td>0</td><td>1</td><td>851</td><td>253</td><td>0</td><td>47</td><td>67</td><td>25</td><td>55</td><td>419</td><td>84</td><td>6</td><td>0</td><td>183</td><td>597</td><td>158</td><td>0</td><td>30</td><td>0</td><td>6</td><td>0
+</td></tr><tr><td>t</td><td>3417</td><td>246</td><td>0</td><td>43</td><td>0</td><td>750</td><td>11</td><td>0</td><td>3475</td><td>466</td><td>0</td><td>0</td><td>277</td><td>18</td><td>12</td><td>997</td><td>0</td><td>0</td><td>153</td><td>158</td><td>335</td><td>189</td><td>0</td><td>77</td><td>0</td><td>55</td><td>0
+</td></tr><tr><td>u</td><td>415</td><td>18</td><td>30</td><td>171</td><td>51</td><td>161</td><td>5</td><td>172</td><td>0</td><td>81</td><td>0</td><td>0</td><td>330</td><td>49</td><td>244</td><td>3</td><td>210</td><td>0</td><td>496</td><td>422</td><td>588</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>14
+</td></tr><tr><td>v</td><td>2</td><td>19</td><td>0</td><td>0</td><td>0</td><td>695</td><td>0</td><td>0</td><td>0</td><td>59</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>63</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>3</td><td>0
+</td></tr><tr><td>w</td><td>360</td><td>584</td><td>0</td><td>0</td><td>10</td><td>347</td><td>5</td><td>0</td><td>507</td><td>366</td><td>0</td><td>0</td><td>31</td><td>0</td><td>139</td><td>270</td><td>0</td><td>0</td><td>32</td><td>20</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>x</td><td>15</td><td>12</td><td>0</td><td>13</td><td>0</td><td>24</td><td>0</td><td>0</td><td>0</td><td>22</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>22</td><td>0</td><td>0</td><td>0</td><td>38</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>y</td><td>1465</td><td>8</td><td>10</td><td>0</td><td>0</td><td>97</td><td>0</td><td>0</td><td>0</td><td>50</td><td>0</td><td>0</td><td>1</td><td>4</td><td>1</td><td>495</td><td>55</td><td>0</td><td>0</td><td>37</td><td>34</td><td>0</td><td>0</td><td>3</td><td>0</td><td>0</td><td>0
+</td></tr><tr><td>z</td><td>0</td><td>7</td><td>0</td><td>0</td><td>0</td><td>31</td><td>0</td><td>0</td><td>0</td><td>10</td><td>0</td><td>0</td><td>14</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>2</td><td>14
+</td></tr></tbody></table>
+</p><p>
+The proposed decryption map is:
+<table cellpadding="5" border="1">
+<tbody><tr><td>space</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z
+</td></tr><tr><td>l</td><td>m</td><td>v</td><td>k</td><td>t</td><td>z</td><td>p</td><td>a</td><td>i</td><td>o</td><td>g</td><td>x</td><td>h</td><td>y</td><td>q</td><td>e</td><td>s</td><td>space</td><td>b</td><td>n</td><td>u</td><td>j</td><td>r</td><td>d</td><td>f</td><td>c</td><td>w
+</td></tr></tbody></table>
+</p><p>
+
+The first step uses the transposition of 'a' and 'c'. Show what to do in this
+case. Show all of the details of the computation, especially the new decryption map.
+</p><p>
+<font color="blue">
+The transposition of a and c will reverse the mappings of &#960;(a)=m and &#960;(c)=k.
+The relevant bigrams that occur in the encrypted message are pc and cb. These are decrypted to the bigrams sk and kv, with frequencies 47 and 0.
+The transposed decrypted bigrams are sm and mv, with frequencies 25 and 0.
+Thus &#945;(&#960;,&#960;') = 25/47 = 0.5319.
+</font></p><p><font color="blue">
+If the transposition is accepted (which has probability 0.5319 so it is more likely than not), then the decryption map changes to:
+<table cellpadding="5" border="1">
+<tbody><tr><td>space</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z
+</td></tr><tr><td>l</td><td>k</td><td>v</td><td>m</td><td>t</td><td>z</td><td>p</td><td>a</td><td>i</td><td>o</td><td>g</td><td>x</td><td>h</td><td>y</td><td>q</td><td>e</td><td>s</td><td>space</td><td>b</td><td>n</td><td>u</td><td>j</td><td>r</td><td>d</td><td>f</td><td>c</td><td>w
+</td></tr></tbody></table>
+otherwise it remains the same.
+</font>
+
+</p><p>
+
+The next step uses the transposition of 'h' and 'm'. Again show what to do in this case.
+Show all of the details of the computation, especially the new decryption map.
+</p><p>
+<font color="blue">
+</font></p><p><font color="blue">
+The transposition of h and m will reverse the mappings of &#960;(h)=i and &#960;(m)=y.
+The relevant bigrams that occur in the encrypted message are uh, hb, wh, hb, wh, hb. 
+These are decrypted to the bigrams ji, iv, di, iv, di, iv, with frequencies 0, 59, 227, 59, 227, 59.
+The transposed decrypted bigrams are jy, yv, dy, yv, dy, yv, with frequencies 0, 0, 45, 0, 45, 0.
+Thus &#945;(&#960;,&#960;') = (0.1 * 45 * 0.1 * 45 * 0.1) / (59 * 227 * 59 * 227 * 59) = 1.91345e-10.
+</font></p><p><font color="blue">
+If the transposition is accepted (which extremely unlikely), then the decryption map changes as follows:
+</font></p><p><font color="blue">
+If the first transposition was accepted:
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><td>space</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z
+</td></tr><tr><td>l</td><td>k</td><td>v</td><td>m</td><td>t</td><td>z</td><td>p</td><td>a</td><td>y</td><td>o</td><td>g</td><td>x</td><td>h</td><td>i</td><td>q</td><td>e</td><td>s</td><td>space</td><td>b</td><td>n</td><td>u</td><td>j</td><td>r</td><td>d</td><td>f</td><td>c</td><td>w
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+If the first transposition was not accepted:
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><td>space</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z
+</td></tr><tr><td>l</td><td>m</td><td>v</td><td>k</td><td>t</td><td>z</td><td>p</td><td>a</td><td>y</td><td>o</td><td>g</td><td>x</td><td>h</td><td>i</td><td>q</td><td>e</td><td>s</td><td>space</td><td>b</td><td>n</td><td>u</td><td>j</td><td>r</td><td>d</td><td>f</td><td>c</td><td>w
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+</font></p><p><font color="blue">
+If the transposition is not accepted, then the decryption map is the following:
+</font></p><p><font color="blue">
+If the first transposition was accepted:
+</font></p><p><font color="blue">
+<table cellpadding="5" border="1">
+<tbody><tr><td>space</td><td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z
+</td></tr><tr><td>l</td><td>k</td><td>v</td><td>m</td><td>t</td><td>z</td><td>p</td><td>a</td><td>i</td><td>o</td><td>g</td><td>x</td><td>h</td><td>y</td><td>q</td><td>e</td><td>s</td><td>space</td><td>b</td><td>n</td><td>u</td><td>j</td><td>r</td><td>d</td><td>f</td><td>c</td><td>w
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+If the first transposition was not accepted then the decryption map is the original one.
+</font>
+</p><p>
+
+2. (25 points) A community has 3600 persons. On each day each person encounters
+24 persons on average. A virus is introduced to the community by infecting one person.
+If a person is infected, the person remains infectious for 4 days on the average. The
+probability of an infectious person infecting another person during an encounter is
+the probability 0.1. Model this situation using a Markov chain in which the unit
+of time is one second. You may assume that at each second at most one person becomes
+infected and at most one person ceases to be infectious. Note that there is no
+immunity to the virus.
+</p><p>
+<font color="blue">
+All that matters in this problem is the number of infected persons at each unit of time.
+So the state is the number of infected persons. There are 3601 states in all. The initial state
+is 1 infected person.
+</font></p><p><font color="blue">
+There are 3600 * 24 encounters per day on average, so there is 1 encounter per second on average.
+If the number of persons who are infected is n (i.e., the state is n), then the encounter will
+involve an infected person and an uninfected person with probability 2 * (n/3600) * (1-n/3600),
+and this will result in a new infection with probability  2 * (n/3600) * (1-n/3600) * 0.1 = (0.2 * n * (3600 - n)) / 12960000.
+In other words, there will be a transition from state n to state n+1 with this probability.
+</font></p><p><font color="blue">
+A person remains infected for t = 3600 * 24 * 4 = 345600 seconds on average. The probability
+that an infected person remains infected during each unit of time is t/(1+t), so the probability
+that an infected person ceases to be infected during each unit of time is 1/(1+t) = 1/345601.
+If there are n persons who are infected, then the probability that one of them ceases to be
+infected during each unit of time is n/345601. In other words, there will be a transition from state n to state n-1 with this probability.
+</font></p><p><font color="blue">
+The remaining transition is from state n to the same state. This occurs with the complementary probability to the other probabilities,
+so that all of them add up to 1.
+</font>
+</p><p>
+3. (20 points) Compute the invariant distribution(s) of the following stochastic matrix:
+</p><p>
+</p><center>
+<table cellpadding="5">
+  <tbody><tr><td>0.1</td><td>0.2</td><td>0.4</td><td>0.3
+  </td></tr><tr><td>0</td><td>0.2</td><td>0.7</td><td>0.1
+  </td></tr><tr><td>0.4</td><td>0</td><td>0.4</td><td>0.2
+  </td></tr><tr><td>0.5</td><td>0.3</td><td>0.1</td><td>0.1
+</td></tr></tbody></table>
+</center>
+<p>
+<font color="blue">
+The invariant distribution is (0.278778,0.142522,0.384495,0.194205). Computing this to 2 decimal places is enough.
+</font>
+</p><p>
+Starting from the pure state (0,0,0,1), compute the next 3 (possibly mixed) states of the Markov chain.
+</p><p>
+<font color="blue">
+The next 3 states of the Markov chain are:
+</font></p><ol><font color="blue">
+<li>(0.5,0.3,0.1,0.1)
+</li><li>(0.14,0.19,0.46,0.21)
+</li><li>(0.303,0.129,0.394,0.174)
+</li></font></ol><font color="blue">
+It is enough to compute these to 2 decimal places accuracy.
+</font>
+<p>
+4. (20 points) Modify the matrix in Question 3 using the Metropolis-Hastings method so
+that it has (0.25, 0.25, 0.25, 0.25) as an invariant distribution. Show your computation.
+Check that your modified matrix has this property.
+</p><p>
+<font color="blue">
+The modified matrix is:
+<table cellpadding="5">
+<tbody><tr><td>0.3</td><td>0</td><td>0.4</td><td>0.3
+</td></tr><tr><td>0</td><td>0.9</td><td>0</td><td>0.1
+</td></tr><tr><td>0.4</td><td>0</td><td>0.5</td><td>0.1
+</td></tr><tr><td>0.3</td><td>0.1</td><td>0.1</td><td>0.5
+</td></tr></tbody></table>
+</font></p><p><font color="blue">
+If this is your solution then you receive full credit. Otherwise, you need to show your work.
+For each i&#8800;j, one needs to compute the value of &#945;(i,j). If this is greater than or equal
+to 1, then the probability of transition from i to j does not change (i.e., it always happens).
+If &#945;(i,j) is less than one, then transition from i to j only happens with probability &#945;(i,j)
+so we need to multiply the probability of transition from i to j by this amount.
+</font></p><p><font color="blue">
+</font></p><ol><font color="blue">
+<li>&#945;(1,2) = 0/0.2 = 0, so no transition occurs. The new probablity is 0.
+</li><li>&#945;(1,3) = 0.4/0.4 = 1, so probability does not change. It remains 0.4.
+</li><li>&#945;(1,4) = 0.5/0.3 &gt; 1, so probability does not change. It remains 0.3.
+</li><li>&#945;(2,1) does not matter since this transition never occurs.
+</li><li>&#945;(2,3) = 0/0.7 = 0, so no transition occurs. The new probablity is 0.
+</li><li>&#945;(2,4) = 0.3/0.1 &gt; 1, so probability does not change. It remains 0.1.
+</li><li>&#945;(3,1) = 0.4/0.4 = 1, so probability does not change. It remains 0.4.
+</li><li>&#945;(3,2) does not matter since this transition never occurs.
+</li><li>&#945;(3,4) = 0.1/0.2 = 0.5, so the probability changes from 0.2 to 0.1 = 0.2 * 0.5.
+</li><li>&#945;(4,1) = 0.3/0.5 = 0.6, so the probability changes from 0.5 to 0.3 = 0.5 * 0.6.
+</li><li>&#945;(4,2) = 0.1/0.3 = 1/3, so the probability changes from 0.3 to 0.1 = 0.3 * 1/3.
+</li><li>&#945;(4,3) = 0.2/0.1 &gt; 1, so probability does not change. It remains 0.1.
+</li></font></ol><font color="blue">
+The diagonal entries are determined by the requirement that the matrix be a stochastic matrix.
+</font><p><font color="blue">
+It is easy to check that (0.25,0.25,0.25,0.25) is invariant.
+</font>
+<font color="red">
+
+One mistake that sometimes occurs is to assume that the objective of this
+problem is to find a matrix that has the specified distribution as an invariant
+distributions. The identity matrix for example, would be such a matrix. However,
+as the solution shows, the Metropolis-Hastings matrix is not the identity
+matrix in this case.
+
+</font></p><p><font color="red">
+
+A stochastic matrix that has the uniform distribution as an invariant is called a <em>doubly-stochastic</em> matrix.
+They have the property that both the rows and the columns are probability distributions.
+
+</font>
+</p><p>
+
+5. (10 points) In the game of cricket (or baseball) the players on a team take
+turns being the batsman (or batter in baseball) in a specified order. In
+baseball this is called the batting <em>lineup</em>. You have a program that
+will simulate a cricket match (or baseball game). The lineup order is
+considered to be an important strategic decision by a team.
+
+</p><p>
+Develop an algorithm using pseudo code for comparing one lineup with another
+one.
+</p><p>
+<font color="blue">
+Note that one is comparing two lineups for the same team, not for different teams.
+The basic step of the algorithm is the following function that takes two lineups
+for the two teams and returns which team won the match:
+</font></p><p><font color="blue">
+</font></p><pre><font color="blue">team playMatch(lineup A, lineup B) (1 point)
+  Randomly play the game with team 1 with lineup A and team 2 with lineup B. (1 point)
+  Return the winner. (1 point)
+</font></pre><font color="blue">
+<p>
+The following computes the number of times that a lineup for the first team
+will win against a random lineup for the second team:
+</p><p>
+</p><pre>double playMatches(lineup A, int n) (1 point)
+  set total to 0 (1 point)
+  perform the following n times (1 point)
+    randomly select a lineup B (1 point)
+    total = total + playMatch(A, B) (1 point)
+  return total / n (1 point)
+</pre>
+</font><p><font color="blue">
+One could also return total without dividing by n.
+Finally, let the two lineups to be compared be called L1 and L2.
+Run playMatches(L1, n) and playMatches(L2, n) using a large number n.
+The lineup with the significantly larger value is the better one. (1 point)
+</font>
+
+
+
+
+
+
+</p></body></html>
